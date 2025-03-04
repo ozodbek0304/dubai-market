@@ -88,7 +88,7 @@ export default function PhoneField<IForm extends FieldValues>({
 
     return (
         <fieldset
-            className={cn("flex flex-col gap-1 w-full", wrapperClassName)}
+            className={cn("flex flex-col itemst gap-1 w-full", wrapperClassName)}
         >
             {label && (
                 <Label
@@ -113,7 +113,7 @@ export default function PhoneField<IForm extends FieldValues>({
                 countrySelectorStyleProps={{
                     // className="hidden",
                     buttonClassName:
-                        "h-full !px-3 !rounded-l-md !bg-background !border-input",
+                        "!h-full !px-3 !rounded-l-md !bg-background !border-input",
                     ...countrySelectorStyleProps,
                 }}
                 value={val}

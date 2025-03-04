@@ -1,21 +1,24 @@
 import AboutUs from "@/components/home/about/about-us";
-import ContactSection from "@/components/home/contact/contact";
+import BronFormContent from "@/components/home/bron-form";
+import TestimonialSlider from "@/components/home/employes";
 import Hero from "@/components/home/hero";
 import Services from "@/components/home/services/services";
-import Footer from "@/components/partials/footer";
-import Navbar from "@/components/partials/navbar";
+import SupportPages from "@/components/home/support";
+import TravelerPages from "@/components/home/traveler";
+import RootLayout from "@/components/layout/root";
 
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
+    <RootLayout>
       <Hero />
       <AboutUs />
       <Services />
-      <ContactSection/>
-      <Footer />
-    </main>
+      <BronFormContent />
+      <SupportPages />
+      <TravelerPages />
+      <TestimonialSlider />
+    </RootLayout>
   )
 }
 

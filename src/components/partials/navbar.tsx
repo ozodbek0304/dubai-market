@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav className={cn("fixed w-full z-50 transition-all duration-300", isScrolled ? "bg-white text-slate-800 shadow-md" : "text-white")}>
-      <div className="container mx-auto flex justify-between items-center h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
         {/* Logo */}
         <Link href="/" className="h-10 w-32">
           <img src={isScrolled ? "logo-dark.png" : "logo.png"} alt="Logo" className="h-full w-full object-contain" />

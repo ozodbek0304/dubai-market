@@ -1,41 +1,48 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Instagram, Phone, Send } from "lucide-react"
+import { Phone, } from "lucide-react"
 import Image from "next/image"
+import { useForm } from "react-hook-form"
+import FormInput from "@/components/form-custom/input"
+import PhoneField from "@/components/form-custom/phone-field"
+import FormTextarea from "@/components/form-custom/textarea"
 
+interface User {
+  name: string
+  phone: string
+  email: string
+  message: string
+}
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
+
+  const form = useForm<User>({
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    },
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-  }
 
+
+  const onSubmit = (values: User) => {
+
+    console.log("Form submitted:", values)
+
+  }
   return (
     <>
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
           <div className="bg-[#F5F7FA] rounded-3xl p-8 shadow-sm">
             <h2 className="text-2xl font-bold mb-6">Biz bilan bog'laning</h2>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-6 mb-8">
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5" />
                 <a href="tel:+97150123456" className="text-gray-600">
@@ -90,64 +97,52 @@ export default function ContactSection() {
           <div className="bg-[#F5F7FA] rounded-3xl p-8 shadow-sm">
             <h2 className="text-2xl font-bold mb-6">Aloqa ma'lumoti</h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="ISM"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg"
-                  required
-                />
-              </div>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 
-              <div>
-                <Input
-                  type="tel"
-                  name="phone"
-                  placeholder="Telefon raqam"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg"
-                  required
-                />
-              </div>
+              <FormInput
+                methods={form}
+                name="name"
+                className="mt-1 h-[50px]"
+                label="Ism"
+                placeholder="Ismingiz"
+                required
+              />
+              <PhoneField
+                methods={form}
+                name="phone"
+                className="mt-1 h-[50px]"
+                required
+              />
+              <FormInput
+                methods={form}
+                name="email"
+                className="mt-1 h-[50px] "
+                label="Email"
+                placeholder="Email manzilingiz"
+                required
+              />
+              <FormTextarea
+                label="Xabar"
+                methods={form}
+                name="message"
+                rows={8}
+                wrapperClassName={"h-[120px] "}
+                className="h-full mt-1 bg-white"
+                placeholder="Sizning xabaringiz"
+                required
 
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg"
-                  required
-                />
-              </div>
-
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Xabar"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg min-h-[150px]"
-                  required
-                />
-              </div>
-
+              />
               <Button
                 type="submit"
-                className=" bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-8 rounded-lg"
+                className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium cursor-pointer py-6 px-8 rounded-lg"
               >
                 Xabar yuborish
               </Button>
+
             </form>
           </div>
         </div>
-      </div>
+      </div >
 
 
     </>
