@@ -1,50 +1,59 @@
-import React from 'react'
-import { Card, CardContent } from '../ui/card'
-import { cn } from '@/lib/utils'
-import { Button } from '../ui/button'
-import { useRouter } from 'next/router'
-
-
+import Link from "next/link"
+import { Card, CardContent } from "../ui/card"
+import { cn } from "@/lib/utils"
 
 const data = [
     {
         title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler1.png",
         description: "📍 Dubai, Marina Beach Resort",
-        col: "lg:col-span-2 col-span-1 row-span-1"
     },
     {
         title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler2.png",
         description: "📍 Dubai, Marina Beach Resort",
-        col: "col-span-1 row-span-1"
     },
     {
         title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler3.png",
         description: "📍 Dubai, Marina Beach Resort",
-        col: "col-span-1 row-span-1"
     }, {
         title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler4.png",
         description: "📍 Dubai, Marina Beach Resort",
-        col: "lg:col-span-2 col-span-1 row-span-1"
+    },
+    {
+        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
+        icon: "/images/traveler1.png",
+        description: "📍 Dubai, Marina Beach Resort",
+    },
+    {
+        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
+        icon: "/images/traveler2.png",
+        description: "📍 Dubai, Marina Beach Resort",
     },
 ]
+export default function TravelsPages() {
 
-
-
-function TravelerPages() {
-
-    const router = useRouter();
 
     return (
-        <div className='sm:py-14  py-8 max-w-[1000px]  2xl:max-w-7xl sm:p-0 p-3 mx-auto'>
-            <h1 className='sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] text-center'>Biz sayohatlarini uyushtirgan mashhurlar</h1>
+        <div className="max-w-[1000px] 2xl:max-w-7xl pt-28 mx-auto sm:px-0 px-3">
+            {/* Breadcrumb */}
+            <div className="pt-3 text-sm text-center">
+                <Link href="/" className="text-gray-500 hover:text-gray-700">
+                    Asosiy sahifa
+                </Link>
+                <span className="text-gray-500"> / Biz sayohatlarini uyushtirgan mashhurlar</span>
+            </div>
 
-            <div className='w-full grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
+
+            {/* Page title */}
+            <h1 className="2xl:text-[48px] sm:text-[36px] text-[28px] font-bold text-center mb-6">Biz sayohatlarini uyushtirgan mashhurlar</h1>
+
+
+            <div className='w-full grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 '>
                 {data?.map((item, index) => (
-                    <Card key={index} className={cn("h-[332px] p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none", item.col)}
+                    <Card key={index} className={cn("h-[332px] p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none")}
                         style={{
                             backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(${item.icon})`,
                             backgroundPosition: "center"
@@ -58,16 +67,7 @@ function TravelerPages() {
                 ))
                 }
             </div>
-
-            <div className='w-full flex justify-center sm:mt-12 mt-4'>
-                <div className="sm:mt-12 mt-8 text-center">
-                    <Button
-                    onClick={()=>router.push("/travel")}
-                     className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">Barchasini ko'rish</Button>
-                </div>
-            </div>
         </div>
     )
 }
 
-export default TravelerPages

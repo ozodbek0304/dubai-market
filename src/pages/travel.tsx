@@ -1,15 +1,15 @@
 import RootLayout from '@/components/layout/root'
-import ServicesPage from '@/components/services/services'
+import TravelsPages from '@/components/travel/travels'
 import React from 'react'
 
 type Props = {}
 
-function Services({}: Props) {
+function TravelPages({}: Props) {
   return (
     <RootLayout navbarTheme={true}>
-        <ServicesPage />
+        <TravelsPages />
     </RootLayout>
   )
 }
 
-export default Services
+export default TravelPages

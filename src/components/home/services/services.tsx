@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button"
 import ServiceCard from "./services-card"
+import { useRouter } from "next/router"
 
 export default function Services() {
+  const router = useRouter();
 
   const services = [
     {
@@ -60,7 +62,9 @@ export default function Services() {
         </div>
 
         <div className="sm:mt-12 mt-8 text-center">
-          <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">Barcha xizmatlarni ko'rish</Button>
+          <Button
+            onClick={() => router.push("/services")}
+            className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">Barcha xizmatlarni ko'rish</Button>
         </div>
       </div>
     </section>

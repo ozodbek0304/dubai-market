@@ -1,8 +1,6 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useForm } from "react-hook-form"
@@ -39,22 +37,7 @@ const formCheckboxData: { label: string, name: BronChekbox }[] = [
 ]
 
 export default function BookingForm() {
-  const [formData, setFormData] = useState({
-    participants: "",
-    arrivalDate: "",
-    departureDate: "",
-    services: {
-      restaurant: false,
-      yacht: false,
-      hotel: false,
-      transport: false,
-      event: false,
-    },
-    requirements: "",
-    name: "",
-    phone: "",
-    email: "",
-  })
+
 
   const form = useForm({
     defaultValues: {
@@ -73,10 +56,7 @@ export default function BookingForm() {
     }
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+
 
   const handleSubmit = (values: any) => {
 
@@ -84,7 +64,7 @@ export default function BookingForm() {
 
   }
   return (
-    <div className="sm:py-16 py-8">
+    <div id="mygroup" className="sm:py-16 py-8">
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
         <div className="relative">

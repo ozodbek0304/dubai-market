@@ -18,15 +18,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  navbarTheme=false,
 }: Readonly<{
   children: React.ReactNode,
+  navbarTheme?: boolean
 }>) {
 
 
 
   return (
-    <div>
-      <Navbar />
+    <div >
+      <Navbar navbarTheme={navbarTheme} />
       {children}
       <ContactSection />
       <Footer />

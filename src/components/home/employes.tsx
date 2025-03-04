@@ -106,7 +106,7 @@ export default function TestimonialSlider() {
 
 
     return (
-        <div className="w-full overflow-hidden py-12">
+        <div id="reviews" className="w-full overflow-hidden py-12">
             <h1 className="sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] max-w-[1000px]  2xl:max-w-7xl mx-auto sm:text-start text-center">Biz haqimizda mijozlar nima deyishadi?</h1>
             <Slider {...settings} className="testimonial-slider -mx-2">
                 {testimonials.map((testimonial) => (
@@ -130,7 +130,7 @@ export default function TestimonialSlider() {
                             {/* Thumbnails */}
                             <div className="flex gap-2 overflow-x-scroll w-full">
                                 {testimonial.images.map((image, index) => (
-                                    <div key={index} className="relative min-w-20 h-20 rounded-lg overflow-hidden">
+                                    <div key={index} className="relative min-w-16 h-16 rounded-md overflow-hidden">
                                         <Image
                                             src={image || "/placeholder.svg"}
                                             alt={`Thumbnail ${index + 1}`}
