@@ -29,7 +29,7 @@ export default function ContactSection() {
 
 
 
-  const onSubmit = (values: User) => {
+  const onSubmit = (values: User,) => {
 
     console.log("Form submitted:", values)
 

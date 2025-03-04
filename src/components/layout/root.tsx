@@ -1,4 +1,4 @@
-"use client"
+"use sever"
 
 import type React from "react"
 import type { Metadata } from "next"
@@ -17,36 +17,20 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  header = <Navbar />,
   children,
-  footer = <>
-    <ContactSection />
-    <Footer />
-  </>,
 }: Readonly<{
-  header?: React.ReactNode,
   children: React.ReactNode,
-  footer?: React.ReactNode,
 }>) {
 
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
-    <html lang="uz" className="scroll-smooth">
-      <body className={inter.className}>
-        {header}
-        {children}
-        {footer}
-      </body>
-    </html>
+    <div>
+      <Navbar />
+      {children}
+      <ContactSection />
+      <Footer />
+    </div>
   )
 }
 

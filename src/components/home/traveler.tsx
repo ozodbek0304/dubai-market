@@ -3,6 +3,8 @@ import { Card, CardContent } from '../ui/card'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
 
+
+
 const data = [
     {
         title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
@@ -29,6 +31,8 @@ const data = [
     },
 ]
 
+
+
 function TravelerPages() {
     return (
         <div className='py-14 container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -38,7 +42,7 @@ function TravelerPages() {
                 {data?.map((item, index) => (
                     <Card key={index} className={cn("h-[332px] p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none", item.col)}
                         style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(${item.icon}`,
+                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(${item.icon})`,
                             backgroundPosition: "center"
                         }}
                     >
