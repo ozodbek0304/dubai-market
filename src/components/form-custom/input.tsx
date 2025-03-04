@@ -32,7 +32,7 @@ export default function FormInput<IForm extends FieldValues>({
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label}ni kiriting`,
+            message: `${label || props.placeholder}ni kiriting`,
         },
     })
 

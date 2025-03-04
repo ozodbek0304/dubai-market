@@ -1,16 +1,22 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useForm } from "react-hook-form"
 import FormInput from "../form-custom/input"
 import FormTextarea from "../form-custom/textarea"
 
+interface UserType {
+  name: string,
+  email: string,
+  phone: string | number,
+  message: string
+}
+
 export default function Hero() {
 
-  const form = useForm<any>({
+  const form = useForm<UserType>({
     defaultValues: {
       name: "",
       email: "",
@@ -19,9 +25,9 @@ export default function Hero() {
     }
   })
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: UserType) => {
     console.log("Form submitted:", values)
-   
+
   }
 
   return (
@@ -48,8 +54,8 @@ export default function Hero() {
 
           <div className="w-full ">
             <Card className="bg-white/20 backdrop-blur-sm border-0 p-0">
-              <CardContent className="sm:p-8 p-3">
-                <p className="text-start sm:text-[24px] text-[14px] text-white mb-4">
+              <CardContent className="sm:p-6 2xl:p-10 p-3">
+                <p className="text-start 2xl:text-[24px] sm:text-lg text-[14px] text-white 2xl:mb-4 sm:mb-2">
                   Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing
                 </p>
 
@@ -58,32 +64,33 @@ export default function Hero() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-[8px] mb-[8px]">
                       <FormInput
                         methods={form}
-                        wrapperClassName="h-[40px] 2xl:h-[59px]"
                         type="text"
                         name="name"
+                        required
                         placeholder="Ismingiz"
-                        className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
+                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <FormInput
                         methods={form}
-                        wrapperClassName="h-[40px] 2xl:h-[59px]"
                         type="email"
+                        required
                         name="email"
                         placeholder="Email"
-                        className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
+                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <FormInput
                         methods={form}
-                        wrapperClassName="h-[40px] 2xl:h-[59px]"
                         type="tel"
+                        required
                         name="phone"
                         placeholder="Telefon"
-                        className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
+                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
 
                       />
                     </div>
                     <FormTextarea
                       methods={form}
+                      required
                       name="message"
                       placeholder="Xabar"
                       className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
@@ -92,13 +99,13 @@ export default function Hero() {
                   </div>
 
                   <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-1  w-full lg:w-[224px] sm:gap-4 gap-2 ">
-                    <Button type="submit" className="bg-yellow-400  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
+                    <Button type="submit" className="bg-yellow-400  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
                       Xabar Yuborish
                     </Button>
                     <Button
-                      type="button"
+                      type="submit"
                       variant="outline"
-                      className="bg-white text-black h-[40px]  2xl:h-[59px] xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
+                      className="bg-white text-black h-[40px]  2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
                     >
                       MyGroup bron qilish
                     </Button>
