@@ -43,9 +43,9 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-16 bg-[#F5F7FA]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-start mb-12">Bizning xizmatlarimiz</h2>
+    <section id="services" className="sm:py-16 py-4 bg-[#F5F7FA] sm:rounded-[64px] sm:p-5 p-3 rounded-2xl">
+      <div className="2xl:max-w-7xl max-w-[1000px]  mx-auto">
+        <h2 className="sm:text-3xl text-2xl font-bold text-center sm:text-start sm:mb-12 mb-4">Bizning xizmatlarimiz</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
@@ -59,8 +59,8 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 xl:h-[62px] py-0 px-8 text-[18px] text-black">Barcha xizmatlarni ko'rish</Button>
+        <div className="sm:mt-12 mt-8 text-center">
+          <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">Barcha xizmatlarni ko'rish</Button>
         </div>
       </div>
     </section>

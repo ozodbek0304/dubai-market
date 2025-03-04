@@ -4,8 +4,6 @@ import type React from "react"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import { useForm } from "react-hook-form"
 import FormDatePicker from "../form-custom/date-picker"
@@ -86,19 +84,19 @@ export default function BookingForm() {
 
   }
   return (
-    <div className="py-16">
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8 p-6 lg:p-16 lg:gap-14 gap-6 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between sm:flex-row'>
+    <div className="sm:py-16 py-8">
+      <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
         <div className="relative">
-          <h1 className="text-2xl font-bold lg:mb-6 mb-2">MyGroup uchun bron  qilish</h1>
+          <h1 className="sm:text-2xl text-center sm:text-start text-xl font-bold lg:mb-6 mb-2">MyGroup uchun bron  qilish</h1>
           <div className="w-[320px] hidden lg:block h-[256px] absolute top-[50%] translate-y-[-50%] mx-auto">
-            <Image src={"/icons/star-icon.png"} width={320} height={256} alt="form_icon" />
+            <Image src={"/icons/star-icon.png"} width={250} height={250} alt="form_icon" />
           </div>
 
         </div>
 
         {/* Right Column */}
-        <div className="space-y-6 bg-white rounded-[32px] lg:w-[588px]  p-8">
+        <div className="space-y-6 bg-white sm:rounded-[32px] rounded-2xl lg:w-[588px]  sm:p-8 p-3 ">
           <h2 className="text-xl font-semibold mb-6">Bron qilish ma'lumotlari</h2>
 
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
@@ -113,14 +111,14 @@ export default function BookingForm() {
                 name="arrivalDate"
                 label="Kelish va ketish sanasi"
                 placeholder="Kelish sanasi"
-                className="h-[50px] mt-1 cursor-pointer"
+                className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
               />
               <FormDatePicker
                 methods={form}
                 name="arrivalDate"
                 placeholder="Ketish sanasi"
-                className="h-[50px] mt-1 cursor-pointer"
+                className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
               />
             </div>
@@ -159,7 +157,7 @@ export default function BookingForm() {
                 <FormInput
                   methods={form}
                   name="name"
-                  className="mt-1 h-[50px]"
+                  className="mt-1 2xl:h-[50px] h-[40px]"
                   label="Ism"
                   placeholder="Ismingiz"
                   required
@@ -167,13 +165,13 @@ export default function BookingForm() {
                 <PhoneField
                   methods={form}
                   name="phone"
-                  className="mt-1 h-[50px]"
+                  className="mt-1 2xl:h-[50px] h-[40px]"
                   required
                 />
                 <FormInput
                   methods={form}
                   name="email"
-                  className="mt-1 h-[50px] "
+                  className="mt-1 2xl:h-[50px] h-[40px] "
                   label="Email"
                   placeholder="Email manzilingiz"
                   required
@@ -181,7 +179,7 @@ export default function BookingForm() {
               </div>
             </div>
 
-            <Button className="w-full mt-6 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg h-[60px]">
+            <Button className="w-full sm:mt-4 mt-3 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg 2xl:h-[50px] h-[40px]">
               Buyurtmani yuborish
             </Button>
           </form>

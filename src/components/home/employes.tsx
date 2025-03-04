@@ -107,7 +107,7 @@ export default function TestimonialSlider() {
 
     return (
         <div className="w-full overflow-hidden py-12">
-            <h1 className="text-[48px] text-center mb-16">Biz haqimizda mijozlar nima deyishadi?</h1>
+            <h1 className="sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] max-w-[1000px]  2xl:max-w-7xl mx-auto sm:text-start text-center">Biz haqimizda mijozlar nima deyishadi?</h1>
             <Slider {...settings} className="testimonial-slider -mx-2">
                 {testimonials.map((testimonial) => (
                     <div key={testimonial.id} className="px-2">

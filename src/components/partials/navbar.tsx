@@ -31,11 +31,11 @@ export default function Navbar() {
 
 
   return (
-    <nav className={cn("fixed w-full z-50 transition-all duration-300", (isScrolled || router.asPath !== "/") ? "bg-white text-slate-800 shadow-md" : "text-white")}>
-      <div className={`container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between ${(isScrolled || router.asPath !== "/") ? "items-center" : "items-end"} h-20`}>
+    <nav className={cn("fixed w-full z-50 transition-all sm:px-0 px-6 duration-300", (isScrolled ) ? "bg-white text-slate-800 shadow-md" : "text-white")}>
+      <div className={`2xl:max-w-7xl max-w-[1000px] mx-auto  flex justify-between ${(isScrolled ) ? "items-center" : "items-end"} h-20`}>
         {/* Logo */}
         <Link href="/" className="h-10 w-32">
-          <img src={(isScrolled || router.asPath !== "/") ? "logo-dark.png" : "logo.png"} alt="Logo" className="h-full w-full object-contain" />
+          <img src={(isScrolled ) ? "logo-dark.png" : "logo.png"} alt="Logo" className="h-full w-full object-contain" />
         </Link>
 
         {/* Desktop Menu */}
@@ -47,14 +47,14 @@ export default function Navbar() {
           ))}
           {/* Language */}
           <div className="w-[110px] flex justify-end">
-            <LanguageComponents theme={(isScrolled || router.asPath !== "/")} />
+            <LanguageComponents theme={(isScrolled )} />
           </div>
         </div>
 
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} className={(isScrolled || router.asPath !== "/") ? "text-slate-800" : "text-white"}>
+          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} className={(isScrolled ) ? "text-slate-800" : "text-white"}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>

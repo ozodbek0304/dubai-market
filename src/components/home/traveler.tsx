@@ -35,8 +35,8 @@ const data = [
 
 function TravelerPages() {
     return (
-        <div className='py-14 container mx-auto px-4 sm:px-6 lg:px-8'>
-            <h1 className='mb-12 font-medium text-[48px] text-center'>Biz sayohatlarini uyushtirgan mashhurlar</h1>
+        <div className='sm:py-14  py-8 max-w-[1000px]  2xl:max-w-7xl sm:p-0 p-3 mx-auto'>
+            <h1 className='sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] text-center'>Biz sayohatlarini uyushtirgan mashhurlar</h1>
 
             <div className='w-full grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
                 {data?.map((item, index) => (
@@ -55,10 +55,10 @@ function TravelerPages() {
                 }
             </div>
 
-           <div className='w-full flex justify-center mt-12'>
-           <Button className=" mt-6 px-8 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium  rounded-lg h-[60px]">
-                Barchasini ko'rish
-            </Button>
+           <div className='w-full flex justify-center sm:mt-12 mt-4'>
+            <div className="sm:mt-12 mt-8 text-center">
+                     <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">Barchasini ko'rish</Button>
+                   </div>
            </div>
         </div>
     )

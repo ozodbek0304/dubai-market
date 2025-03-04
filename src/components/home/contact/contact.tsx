@@ -36,11 +36,11 @@ export default function ContactSection() {
   }
   return (
     <>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
-          <div className="bg-[#F5F7FA] rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6">Biz bilan bog'laning</h2>
+          <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
+            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">Biz bilan bog'laning</h2>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-3">
@@ -94,15 +94,15 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column */}
-          <div className="bg-[#F5F7FA] rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6">Aloqa ma'lumoti</h2>
+          <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
+            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">Aloqa ma'lumoti</h2>
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 
               <FormInput
                 methods={form}
                 name="name"
-                className="mt-1 h-[50px]"
+                className="mt-1 2xl:h-[50px] h-[40px]"
                 label="Ism"
                 placeholder="Ismingiz"
                 required
@@ -110,13 +110,13 @@ export default function ContactSection() {
               <PhoneField
                 methods={form}
                 name="phone"
-                className="mt-1 h-[50px]"
+                className="mt-1 2xl:h-[50px] h-[40px]"
                 required
               />
               <FormInput
                 methods={form}
                 name="email"
-                className="mt-1 h-[50px] "
+                className="mt-1 2xl:h-[50px] h-[40px] "
                 label="Email"
                 placeholder="Email manzilingiz"
                 required
@@ -134,7 +134,8 @@ export default function ContactSection() {
               />
               <Button
                 type="submit"
-                className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium cursor-pointer py-6 px-8 rounded-lg"
+                className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium 
+                cursor-pointer 2xl:py-6 py-4 px-8 rounded-lg"
               >
                 Xabar yuborish
               </Button>
