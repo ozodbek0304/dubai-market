@@ -34,7 +34,7 @@ export default function Hero() {
     <section className="relative sm:p-5 p-3 ">
       {/* Background image */}
       <div
-        className="inset-0 bg-cover bg-no-repeat bg-center p-3 sm:p-6 sm:pb-[80px] pb-24 rounded-[32px] sm:rounded-[64px] z-0 "
+        className="inset-0 bg-cover bg-no-repeat bg-center p-3 sm:p-6 sm:pb-[80px] pb-24 rounded-[32px] lg:rounded-[64px] z-0 "
         style={{
           backgroundImage: "linear-gradient(180deg, rgba(30, 29, 33, 0.3886) 0%, rgba(30, 29, 33, 0.2436) 61.98%, rgba(30, 29, 33, 0.5046) 100%), url(hero.jpeg)",
           backgroundPosition: "center",
