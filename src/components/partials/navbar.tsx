@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronRight, Menu, X } from "lucide-react";
+import { CalendarRange, ChevronRight, CircleCheck, Info, Menu, PhoneCall, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LanguageComponents from "./language";
+import { useRouter } from "next/router";
 
 
 
@@ -17,9 +18,19 @@ const navLinks = [
   { href: "#contact", label: "Aloqa" },
 ];
 
+const navLinksMobile = [
+  { href: "#about", label: "Biz haqimizda", icon: <Info className="w-4 h-4" /> },
+  { href: "#services", label: "Xizmatlar", icon: <CalendarRange className="w-4 h-4" /> },
+  { href: "#mygroup", label: "MyGroup bron qilish", icon: <CircleCheck className="w-4 h-4" /> },
+  { href: "#reviews", label: "Foydalanuvchilar fikrlari", icon: <Users className="w-4 h-4" /> },
+  { href: "#contact", label: "Aloqa", icon: <PhoneCall className="w-4 h-4" /> },
+];
+
 export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 30);
@@ -28,18 +39,20 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
   }, []);
 
 
+
+
   return (
     <nav className={cn("fixed w-full z-50 transition-all lg:px-0 px-6 duration-300", (isScrolled || navbarTheme || isMenuOpen) ? "bg-white text-slate-800 shadow-md" : "text-white")}>
       <div className={`2xl:max-w-7xl max-w-[1000px] mx-auto  flex justify-between ${(isScrolled || navbarTheme || isMenuOpen) ? "items-center   border-b lg:border-none " : "items-end "} h-20`}>
         {/* Logo */}
-        <Link href="/" className="h-10 w-32">
+        <Link href="/" className=" lg:w-40 w-32">
           <img src={(isScrolled || navbarTheme || isMenuOpen) ? "logo-dark.png" : "logo.png"} alt="Logo" className="h-full w-full object-contain" />
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-lime-300 font-medium text-sm sm:text-md 2xl:text-lg">
+            <Link key={link.href} href={link.href} className={`hover:text-[#FFD700] ${`/${link.href}` == router.asPath ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
               {link.label}
             </Link>
           ))}
@@ -60,20 +73,25 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden transition-all duration-100 py-2 ">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="border-b
-            w-full
-            items-center
-            justify-between
-             flex py-2 
-             hover:bg-gray-800" onClick={() => setIsMenuOpen(false)}>
-              <span>{link.label}</span>
+        <div className="lg:hidden transition-all duration-100  ">
+          {navLinksMobile.map((link) => (
+            <Link key={link.href} href={link.href}
+              className={`border-b ${`/${link.href}` == router.asPath ? "text-[#FFD700]" : ""}  w-full items-center justify-between flex py-3   hover:text-[#FFD700`}
+              onClick={() => setIsMenuOpen(false)}>
+              <div className="flex items-center gap-2">
+                <span>{link.icon}</span>
+                <span className="text-sm">{link.label}</span>
+              </div>
               <span className="w-9 flex justify-center">
-              <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4" />
               </span>
             </Link>
           ))}
+          <div className="w-full px-2 pt-4 pb-12">
+            <Button type="button" className="bg-yellow-400  hover:bg-yellow-500 w-full h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
+              Xabar Yuborish
+            </Button>
+          </div>
         </div>
       )}
     </nav>
