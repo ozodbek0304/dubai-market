@@ -48,6 +48,7 @@ function Button({
 
   return (
     <Comp
+      aria-label="Dubay sayohatini boshlash"
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}

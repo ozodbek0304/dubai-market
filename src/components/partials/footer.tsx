@@ -67,13 +67,13 @@ export default function Footer() {
             <h3 className="font-medium text-[#020105] mb-2">{t("Ijtimoiy tarmoqlar")}</h3>
             <div className="flex gap-4">
               <a href="#" >
-                <Image height={35} width={35} alt="instagram" src={"/icons/instagram.png"} />
+                <Image priority height={35} width={35} alt="instagram" src={"/icons/instagram.png"} />
               </a>
               <a href="#" >
-                <Image height={35} width={35} alt="telegram" src={"/icons/telegram.png"} />
+                <Image priority height={35} width={35} alt="telegram" src={"/icons/telegram.png"} />
               </a>
               <a href="#" >
-                <Image height={35} width={35} alt="phone" src={"/icons/phone.png"} />
+                <Image priority height={35} width={35} alt="phone" src={"/icons/phone.png"} />
               </a>
             </div>
           </div>

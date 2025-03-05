@@ -135,7 +135,7 @@ export default function TestimonialSlider() {
                             <div className="flex gap-2 overflow-x-scroll w-full">
                                 {testimonial.images.map((image, index) => (
                                     <div key={index} className="relative min-w-16 h-16 rounded-md overflow-hidden">
-                                        <Image
+                                        <Image priority
                                             src={image || "/placeholder.svg"}
                                             alt={`Thumbnail ${index + 1}`}
                                             fill

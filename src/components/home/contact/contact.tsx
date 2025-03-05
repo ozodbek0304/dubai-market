@@ -118,13 +118,13 @@ export default function ContactSection() {
 
             <div className="flex gap-6">
               <a href="#" className="">
-                <Image src="/icons/instagram.png" alt="instagram" width={40} height={40} />
+                <Image priority src="/icons/instagram.png" alt="instagram" width={40} height={40} />
               </a>
               <a href="#" className="">
-                <Image src="/icons/telegram.png" alt="telegram" width={40} height={40} />
+                <Image priority src="/icons/telegram.png" alt="telegram" width={40} height={40} />
               </a>
               <a href="#" className="">
-                <Image src="/icons/phone.png" alt="phone" width={40} height={40} />
+                <Image priority src="/icons/phone.png" alt="phone" width={40} height={40} />
               </a>
             </div>
           </div>

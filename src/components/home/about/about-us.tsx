@@ -40,7 +40,7 @@ export default function AboutUs() {
                 data?.map(item => (
                   <div key={item.id} className="flex items-center gap-4">
                     <div className="w-12 2xl:w-16 h-12 2xl:h-16 bg-white rounded-md flex items-center justify-center">
-                      <Image width={44} height={44} src={item.icon} alt={t(item?.title)} />
+                      <Image priority width={44} height={44} src={item.icon} alt={t(item?.title)} />
                     </div>
                     <span className="sm:text-2xl text-xl font-semibold">{t(item?.title)}</span>
                   </div>

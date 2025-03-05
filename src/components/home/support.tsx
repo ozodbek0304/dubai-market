@@ -37,7 +37,7 @@ function SupportPages() {
                 {data?.map((item, index) => (
                     <Card key={index} className="h-full shadow-[3px 19px 72.5px 0px #0000000F] border-none">
                         <CardContent className="pt-0">
-                            <Image width={64} height={64} className="mb-6" src={item.icon} alt={t(item.title)} />
+                            <Image priority width={64} height={64} className="mb-6" src={item.icon} alt={t(item.title)} />
                             <h3 className="text-xl font-bold mb-3">{t(item.title)}</h3>
                             <p className="text-gray-600 text-sm">{t(item.description)}</p>
                         </CardContent>

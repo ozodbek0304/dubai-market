@@ -80,7 +80,7 @@ export default function TravelsDetailsPages() {
                             className={`p-4 bg-[#FEFCE3] rounded-lg flex items-center gap-3 ${index === services.length - 1 ? "md:col-span-2" : ""
                                 }`}
                         >
-                            <Image src={"/icons/star-trevel.png"} width={30} height={30} alt="star-icon" />
+                            <Image priority src={"/icons/star-trevel.png"} width={30} height={30} alt="star-icon" />
                             <span className="text-gray-800">{service}</span>
                         </div>
                     ))}
