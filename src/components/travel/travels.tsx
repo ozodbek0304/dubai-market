@@ -43,7 +43,7 @@ export default function TravelsPages() {
             {/* Breadcrumb */}
             <div className="pt-3 text-sm text-center">
                 <Link href="/" className="text-gray-500 hover:text-gray-700">
-                    Asosiy sahifa
+                    Bosh sahifa
                 </Link>
                 <span className="text-gray-500"> / Biz sayohatlarini uyushtirgan mashhurlar</span>
             </div>

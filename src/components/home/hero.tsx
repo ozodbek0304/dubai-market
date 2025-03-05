@@ -9,6 +9,7 @@ import FormTextarea from "../form-custom/textarea"
 import PhoneField from "../form-custom/phone-field"
 import { usePost } from "@/services/https"
 import toast from 'react-hot-toast';
+import { useTranslation } from "react-i18next"
 
 
 interface FormType {
@@ -20,6 +21,7 @@ interface FormType {
 
 export default function Hero() {
   const { mutate } = usePost();
+  const { t } = useTranslation();
 
   const form = useForm<FormType>({
     defaultValues: {
@@ -34,7 +36,7 @@ export default function Hero() {
   const onSubmit = (values: FormType,) => {
     mutate("contact-sale", values, {
       onSuccess: () => {
-        toast.success("Xush kelibsiz! Xabaringiz yuborildi");
+        toast.success(t("Xush kelibsiz! Xabaringiz yuborildi"));
         form.reset();
       },
       onError: (error: any) => {
@@ -47,7 +49,7 @@ export default function Hero() {
             });
           });
         } else {
-          toast.error("Xatolik yuz berdi.");
+          toast.error(t("Xatolik yuz berdi."));
         }
       },
     })
@@ -71,9 +73,9 @@ export default function Hero() {
             <div className="mb-6">
               <img src="logo.png" alt="MD Tours" className="h-16 mx-auto" />
             </div>
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4">DUBAYDAGI SHAXSIY VIP XIZMATLAR</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
             <p className="text-sm md:text-xl ">
-              ""Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz"
+              ""{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}"
             </p>
           </div>
 
@@ -81,7 +83,7 @@ export default function Hero() {
             <Card className="bg-white/20 backdrop-blur-sm border-0 p-0">
               <CardContent className="sm:p-6 2xl:p-10 p-3">
                 <p className="text-start 2xl:text-[24px] sm:text-lg text-[14px] text-white 2xl:mb-4 sm:mb-2">
-                  Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing
+                  {t("Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing")}
                 </p>
 
                 <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 gap-4 ">
@@ -92,7 +94,7 @@ export default function Hero() {
                         type="text"
                         name="name"
                         required
-                        placeholder="Ismingiz"
+                        placeholder={t("Ismingiz")}
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <FormInput
@@ -100,7 +102,7 @@ export default function Hero() {
                         type="email"
                         required={form.watch("phone") ? false : true}
                         name="email"
-                        placeholder="Email"
+                        placeholder={t("Email")}
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <PhoneField
@@ -118,7 +120,7 @@ export default function Hero() {
                     <FormTextarea
                       methods={form}
                       name="message"
-                      placeholder="Xabar"
+                      placeholder={t("Xabar")}
                       className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       rows={3}
                     />
@@ -126,14 +128,14 @@ export default function Hero() {
 
                   <div className="grid sm:grid-cols-2  grid-cols-1 lg:grid-cols-1  w-full lg:w-[224px] sm:gap-4 gap-2 ">
                     <Button type="submit" className="bg-yellow-400 cursor-pointer  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
-                      Xabar Yuborish
+                      {t("Xabar Yuborish")}
                     </Button>
                     <Button
                       type="submit"
                       variant="outline"
                       className="bg-white text-black h-[40px] cursor-pointer  2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
                     >
-                      MyGroup bron qilish
+                      {t("MyGroup bron qilish")}
                     </Button>
                   </div>
                 </form>

@@ -14,6 +14,7 @@ import {
 import "react-international-phone/style.css"
 import { Label } from "../ui/label"
 import ErrorMessage from "../ui/error-message"
+import { useTranslation } from "react-i18next"
 
 interface IProps<IForm extends FieldValues> {
     methods: UseFormReturn<IForm>
@@ -48,6 +49,8 @@ export default function PhoneField<IForm extends FieldValues>({
             return false
         }
     }
+
+    const { t } = useTranslation();
 
     const {
         field: { value, ...field },
@@ -96,7 +99,7 @@ export default function PhoneField<IForm extends FieldValues>({
                     className={cn(!!error && "text-destructive")}
                     required={required}
                 >
-                    {label}
+                    {t(label)}
                 </Label>
             )}
             <PhoneInput
@@ -118,7 +121,7 @@ export default function PhoneField<IForm extends FieldValues>({
                 }}
                 value={val}
                 defaultCountry="uz"
-                placeholder={label}
+                placeholder={t(label)}
                 {...field}
                 {...props}
             />

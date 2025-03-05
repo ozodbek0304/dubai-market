@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Card, CardContent } from "../ui/card"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { useTranslation } from "react-i18next"
 
 const data = [
     {
@@ -29,6 +30,7 @@ const services = [
     "Iman Gadzhi bilan shaxsiy murabbiyllik seansi",
   ]
 export default function TravelsDetailsPages() {
+     const { t } = useTranslation();
 
 
     return (
@@ -36,9 +38,9 @@ export default function TravelsDetailsPages() {
             {/* Breadcrumb */}
             <div className="py-3 text-sm text-center">
                 <Link href="/" className="text-gray-500 hover:text-gray-700">
-                    Asosiy sahifa
+                    {t("Bosh sahifa")}
                 </Link>
-                <span className="text-gray-500"> / Biz sayohatlarini uyushtirgan mashhurlar</span>
+                <span className="text-gray-500"> / {t("Biz sayohatlarini uyushtirgan mashhurlar")}</span>
             </div>
 
 
@@ -55,8 +57,8 @@ export default function TravelsDetailsPages() {
                         }}
                     >
                         <CardContent className="p-4 flex flex-col h-full justify-end">
-                            <h3 className="text-xl text-white font-bold mb-2">{item.title}</h3>
-                            <p className="text-white text-md">{item.description}</p>
+                            <h3 className="text-xl text-white font-bold mb-2">{t(item.title)}</h3>
+                            <p className="text-white text-md">{t(item.description)}</p>
                         </CardContent>
                     </Card>
                 ))

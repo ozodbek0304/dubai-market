@@ -83,7 +83,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
               onClick={() => setIsMenuOpen(false)}>
               <div className="flex items-center gap-2">
                 <span>{link.icon}</span>
-                <span className="text-sm">{link.label}</span>
+                <span className="text-sm">{t(link.label)}</span>
               </div>
               <span className="w-9 flex justify-center">
                 <ChevronRight className="w-4 h-4" />
@@ -92,7 +92,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
           ))}
           <div className="w-full px-2 pt-4 pb-12">
             <Button type="button" className="bg-yellow-400  hover:bg-yellow-500 w-full h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
-              Xabar Yuborish
+              {t("Xabar Yuborish")}
             </Button>
           </div>
         </div>

@@ -10,6 +10,7 @@ import PhoneField from "@/components/form-custom/phone-field"
 import FormTextarea from "@/components/form-custom/textarea"
 import { usePost } from "@/services/https"
 import toast from 'react-hot-toast';
+import { useTranslation } from "react-i18next"
 
 
 type FormType = {
@@ -21,6 +22,7 @@ type FormType = {
 
 export default function ContactSection() {
   const { mutate } = usePost();
+  const { t } = useTranslation();
 
   const form = useForm<FormType>({
     defaultValues: {
@@ -37,7 +39,7 @@ export default function ContactSection() {
   const onSubmit = (values: FormType,) => {
     mutate("contact-sale", values, {
       onSuccess: () => {
-        toast.success("Xush kelibsiz! Xabaringiz yuborildi");
+        toast.success(t("Xush kelibsiz! Xabaringiz yuborildi"));
         form.reset();
       },
       onError: (error: any) => {
@@ -50,7 +52,7 @@ export default function ContactSection() {
             });
           });
         } else {
-          toast.error("Xatolik yuz berdi.");
+          toast.error(t("Xatolik yuz berdi."));
         }
       },
     })
@@ -65,14 +67,23 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
           <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">Biz bilan bog'laning</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">{t("Biz bilan bog'laning")}</h2>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5" />
-                <a href="tel:+97150123456" className="text-gray-600">
-                  +971 50 123 4567
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href="tel:+971581694135" className="text-[#020105] hover:text-yellow-500">
+                    UAE
+                    call, whatsaap, telegram <br />
+                    +971 58 169 4135
+                  </a>
+                  <a href="tel:+998773090070" className="text-[#020105] hover:text-yellow-500">
+                    Uzbekistan
+                    call, whtsaap telegram <br />
+                    +998 77 309 00 70
+                  </a>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <svg
@@ -101,7 +112,7 @@ export default function ContactSection() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span className="text-gray-600">Dubai, United Arab Emirates</span>
+                <span className="text-gray-600">{t("Dubai, United Arab Emirates")}</span>
               </div>
             </div>
 
@@ -120,7 +131,7 @@ export default function ContactSection() {
 
           {/* Right Column */}
           <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">Aloqa ma'lumoti</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">{t("Aloqa ma'lumoti")}</h2>
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 
@@ -128,8 +139,8 @@ export default function ContactSection() {
                 methods={form}
                 name="name"
                 className="mt-1 2xl:h-[50px] h-[40px]"
-                label="Ism"
-                placeholder="Ismingiz"
+                label={t("Ism")}
+                placeholder={t("Ismingiz")}
                 required
               />
               <PhoneField
@@ -142,17 +153,17 @@ export default function ContactSection() {
                 methods={form}
                 name="email"
                 className="mt-1 2xl:h-[50px] h-[40px] "
-                label="Email"
-                placeholder="Email manzilingiz"
+                label={t("Email")}
+                placeholder={t("Email manzilingiz")}
                 required={form.watch("phone") ? false : true}
               />
               <FormTextarea
                 methods={form}
-                label="Xabar"
+                label={t("Xabar")}
                 name="message"
                 wrapperClassName={"h-[120px] "}
                 className="h-full mt-1 bg-white"
-                placeholder="Sizning xabaringiz"
+                placeholder={t("Sizning xabaringiz")}
                 required
 
               />
@@ -161,7 +172,7 @@ export default function ContactSection() {
                 className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium 
                 cursor-pointer 2xl:py-6 py-4 px-8 rounded-lg"
               >
-                Xabar yuborish
+                {t("Xabar yuborish")}
               </Button>
 
             </form>

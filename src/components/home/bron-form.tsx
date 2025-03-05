@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
 import toast from 'react-hot-toast';
+import { useTranslation } from "react-i18next"
 
 
 function formatDate(dateStr: string) {
@@ -30,7 +31,7 @@ function formatDate(dateStr: string) {
 
 
 const formSchema = z.object({
-  count_people: z.string().min(1, "Ishtirokchilar soni majburiy!"),
+  count_people: z.string().min(1, ("Ishtirokchilar soni majburiy!")),
   arrival: z.string().min(1, "Kelish sanasi majburiy!"),
   departure: z.string().min(1, "Ketish sanasi majburiy!"),
   extra_demands: z.string().min(1, "Qo‘shimcha talablar majburiy!"),
@@ -47,6 +48,7 @@ type FormType = z.infer<typeof formSchema>;
 export default function BookingForm() {
   const { data, isSuccess } = useGet("services");
   const { mutate } = usePost();
+  const { t } = useTranslation();
 
 
   const form = useForm<FormType>({
@@ -76,7 +78,7 @@ export default function BookingForm() {
 
     mutate("tourbook", formattedData, {
       onSuccess: () => {
-        toast.success("Xush kelibsiz! buyurtma qabul qilindi")
+        toast.success(t("Xush kelibsiz! buyurtma qabul qilindi"))
         form.reset();
       },
       onError: (error: any) => {
@@ -89,7 +91,7 @@ export default function BookingForm() {
             });
           });
         } else {
-          toast.error("Xatolik yuz berdi.");
+          toast.error(t("Xatolik yuz berdi."));
         }
       },
     })
@@ -104,7 +106,7 @@ export default function BookingForm() {
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
         <div className="relative">
-          <h1 className="sm:text-2xl text-center sm:text-start text-xl font-bold lg:mb-6 mb-2">MyGroup uchun bron  qilish</h1>
+          <h1 className="sm:text-2xl text-center sm:text-start text-xl font-bold lg:mb-6 mb-2">{t("MyGroup uchun bron qilish")}</h1>
           <div className="w-[320px] hidden lg:block h-[256px] absolute top-[50%] translate-y-[-50%] mx-auto">
             <Image src={"/icons/star-icon.png"} width={250} height={250} alt="form_icon" />
           </div>
@@ -113,7 +115,7 @@ export default function BookingForm() {
 
         {/* Right Column */}
         <div className="space-y-6 bg-white sm:rounded-[32px] rounded-2xl lg:w-[588px]  sm:p-8 p-3 ">
-          <h2 className="text-xl font-semibold mb-6">Bron qilish ma'lumotlari</h2>
+          <h2 className="text-xl font-semibold mb-6">{t("Bron qilish ma'lumotlari")}</h2>
 
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
             <FormInput
@@ -121,8 +123,8 @@ export default function BookingForm() {
               methods={form}
               name="count_people"
               className="mt-1 2xl:h-[50px] h-[40px]"
-              label="Ishtirokchilar sonini tanlang"
-              placeholder="Ishtirokchilar sonini tanlang"
+              label={t("Ishtirokchilar sonini tanlang")}
+              placeholder={t("Ishtirokchilar sonini tanlang")}
               required
             />
 
@@ -130,15 +132,15 @@ export default function BookingForm() {
               <FormDatePicker
                 methods={form}
                 name="arrival"
-                label="Kelish va ketish sanasi"
-                placeholder="Kelish sanasi"
+                label={t("Kelish va ketish sanasi")}
+                placeholder={t("Kelish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
               />
               <FormDatePicker
                 methods={form}
                 name="departure"
-                placeholder="Ketish sanasi"
+                placeholder={t("Ketish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
               />
@@ -146,7 +148,7 @@ export default function BookingForm() {
 
             <div>
               <Label className={`block text-sm mb-1 ${form.formState.errors.services ? "text-destructive" : ""}`} >
-                Xizmatlar turi <span className="text-red-500">*</span>
+               {t("Xizmatlar turi")} <span className="text-red-500">*</span>
               </Label>
               <div className="w-full mt-1 flex flex-wrap gap-3">
                 {isSuccess && data?.map((item: { title: string, id: number }) => (
@@ -185,7 +187,7 @@ export default function BookingForm() {
             </div>
 
             <FormTextarea
-              label="Qo'shimcha talablar"
+              label={t("Qo'shimcha talablar")}
               methods={form}
               name="extra_demands"
               rows={8}
@@ -195,14 +197,14 @@ export default function BookingForm() {
             />
 
             <div className="pt-4">
-              <h3 className="text-lg font-semibold mb-4">Aloqa ma'lumotlari</h3>
+              <h3 className="text-lg font-semibold mb-4">{t("Aloqa ma'lumotlari")}</h3>
               <div className="space-y-4">
                 <FormInput
                   methods={form}
                   name="name"
                   className="mt-1 2xl:h-[50px] h-[40px]"
-                  label="Ism"
-                  placeholder="Ismingiz"
+                  label={t("Ism")}
+                  placeholder={t("Ismingiz")}
                   required
                 />
                 <PhoneField
@@ -215,15 +217,15 @@ export default function BookingForm() {
                   methods={form}
                   name="email"
                   className="mt-1 2xl:h-[50px] h-[40px] "
-                  label="Email"
-                  placeholder="Email manzilingiz"
+                  label={t("Email")}
+                  placeholder={t("Email manzilingiz")}
                   required
                 />
               </div>
             </div>
 
             <Button className="w-full sm:mt-4 mt-3 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg 2xl:h-[50px] h-[40px]">
-              Buyurtmani yuborish
+              {t("Buyurtmani yuborish")}
             </Button>
           </form>
         </div>
