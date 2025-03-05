@@ -107,9 +107,13 @@ export default function BookingForm() {
         {/* Left Column */}
         <div className="relative">
           <h1 className="sm:text-2xl text-center sm:text-start text-xl font-bold lg:mb-6 mb-2">{t("MyGroup uchun bron qilish")}</h1>
-          <div className="w-[320px] hidden lg:block h-[256px] absolute top-[50%] translate-y-[-50%] mx-auto">
+          <div className="w-[320px] hidden lg:block h-[256px] absolute top-[55%] translate-y-[-55%] mx-auto">
             <Image src={"/icons/star-icon.png"} width={250} height={250} alt="form_icon" />
           </div>
+
+          <p className="lg:max-w-[320px]  text-sm 2xl:text-md">
+          Biz har qanday guruh va oilalar uchun sayohatlar, transferlar va boshqa xizmatlarni tashkil qilamiz. Shuningdek, Dubayda VIP sayohatlarni tashkil qilish bo‘yicha ixtisoslashgan eksklyuziv kompaniyamiz. Maqsadimiz – hashamat, qulaylik va shaxsiy yondashuvni qadrlaydigan mijozlarimizga noyob va shaxsiylashtirilgan sayohat xizmatlarini taqdim etish. Har bir sayohatingizni unutilmas tajribaga aylantirishga intilamiz.
+          </p>
 
         </div>
 
