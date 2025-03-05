@@ -10,6 +10,9 @@ import FormTextarea from "../form-custom/textarea"
 import { Label } from "../ui/label"
 import FormInput from "../form-custom/input"
 import PhoneField from "../form-custom/phone-field"
+import dynamic from "next/dynamic"
+
+const SelectField = dynamic(() => import("../form-custom/select-field"), { ssr: false });
 
 type BronChekbox = "restaurant" | "yacht" | "hotel" | "transport" | "event"
 
@@ -36,10 +39,16 @@ const formCheckboxData: { label: string, name: BronChekbox }[] = [
   },
 ]
 
+const categories = [
+  { id: "tech", name: "Texnologiya" },
+  { id: "science", name: "Fan" },
+  { id: "business", name: "Biznes" },
+];
+
 export default function BookingForm() {
 
 
-  const form = useForm({
+  const form = useForm<any>({
     defaultValues: {
       participants: "",
       arrivalDate: "",
@@ -80,10 +89,17 @@ export default function BookingForm() {
           <h2 className="text-xl font-semibold mb-6">Bron qilish ma'lumotlari</h2>
 
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-            {/* <SelectField
+            <SelectField
               methods={form}
-              name="arrivalDate"
-            /> */}
+              name="participants"
+              label="Ishtirokchilar sonini tanlang"
+              placeholder="Ishtirokchilar sonini tanlang"
+              className="mt-1 "
+              required
+              options={categories}
+              optionLabelKey="name"
+              optionValueKey="id"
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-end">
               <FormDatePicker

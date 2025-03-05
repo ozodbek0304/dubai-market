@@ -168,7 +168,7 @@ const defaultSelectClassNames: ClassNamesConfig = {
         isDisabled: boolean
     }) =>
         cn(
-            "h-9 !min-h-[unset] flex rounded-md border border-input bg-background px-3 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium",
+            "2xl:h-[50px] h-[40px] !min-h-[unset] flex rounded-md border border-input bg-background px-3 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium",
             isFocused ? "outline-none ring-2 ring-ring" : "",
             isDisabled ? "opacity-50" : "",
         ),
