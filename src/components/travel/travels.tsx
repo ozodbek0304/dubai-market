@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent } from "../ui/card"
 import { cn } from "@/lib/utils"
+import { useRouter } from "next/router"
 
 const data = [
     {
@@ -34,6 +35,7 @@ const data = [
     },
 ]
 export default function TravelsPages() {
+    const { push } = useRouter();
 
 
     return (
@@ -53,7 +55,7 @@ export default function TravelsPages() {
 
             <div className='w-full grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 '>
                 {data?.map((item, index) => (
-                    <Card key={index} className={cn("h-[332px] p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none")}
+                    <Card onClick={()=>push("/travel/1")} key={index} className={cn("h-[332px] cursor-pointer p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none")}
                         style={{
                             backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(${item.icon})`,
                             backgroundPosition: "center"

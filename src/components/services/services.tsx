@@ -75,7 +75,7 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3  gap-6">
                 {/* Map through services data */}
                 {servicesData.map((service) => (
-                    <div key={service.id} className="bg-white rounded-[32px] shadow-none p-8"
+                    <div key={service.id} className="bg-white 2xl:rounded-[32px] rounded-2xl shadow-none p-8"
                         style={{ boxShadow: "0px 15px 76px 0px #44485B1F" }}
                     >
                         <div className="flex justify-center mb-4">
