@@ -6,8 +6,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useForm } from "react-hook-form"
 import FormInput from "../form-custom/input"
 import FormTextarea from "../form-custom/textarea"
+import PhoneField from "../form-custom/phone-field"
+import { usePost } from "@/services/https"
+import toast from 'react-hot-toast';
 
-interface UserType {
+
+interface FormType {
   name: string,
   email: string,
   phone: string | number,
@@ -15,8 +19,9 @@ interface UserType {
 }
 
 export default function Hero() {
+  const { mutate } = usePost();
 
-  const form = useForm<UserType>({
+  const form = useForm<FormType>({
     defaultValues: {
       name: "",
       email: "",
@@ -25,10 +30,30 @@ export default function Hero() {
     }
   })
 
-  const handleSubmit = (values: UserType) => {
-    console.log("Form submitted:", values)
+
+  const onSubmit = (values: FormType,) => {
+    mutate("contact-sale", values, {
+      onSuccess: () => {
+        toast.success("Xush kelibsiz! Xabaringiz yuborildi");
+        form.reset();
+      },
+      onError: (error: any) => {
+        if (error.response?.data) {
+          const errors = error.response.data;
+          Object.entries(errors).forEach(([key, message]) => {
+            form.setError(key as keyof FormType, {
+              type: "server",
+              message: message as string,
+            });
+          });
+        } else {
+          toast.error("Xatolik yuz berdi.");
+        }
+      },
+    })
 
   }
+
 
   return (
     <section className="relative sm:p-5 p-3 ">
@@ -59,7 +84,7 @@ export default function Hero() {
                   Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing
                 </p>
 
-                <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 gap-4 ">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 gap-4 ">
                   <div className="w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-[8px] mb-[8px]">
                       <FormInput
@@ -73,24 +98,25 @@ export default function Hero() {
                       <FormInput
                         methods={form}
                         type="email"
-                        required
+                        required={form.watch("phone") ? false : true}
                         name="email"
                         placeholder="Email"
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
-                      <FormInput
+                      <PhoneField
+                        label=""
                         methods={form}
-                        type="tel"
-                        required
                         name="phone"
-                        placeholder="Telefon"
-                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
-
+                        className=" 2xl:h-[59px] !bg-transparent  h-[40px]"
+                        required={form.watch("email") ? false : true}
+                        inputClassName="!bg-transparent !text-white !border-[#FFFFFF33]"
+                        countrySelectorStyleProps={{
+                          buttonClassName: "!h-full !px-3  !rounded-l-md !bg-transparent !border-[#FFFFFF33]"
+                        }}
                       />
                     </div>
                     <FormTextarea
                       methods={form}
-                      required
                       name="message"
                       placeholder="Xabar"
                       className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
@@ -98,14 +124,14 @@ export default function Hero() {
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-1  w-full lg:w-[224px] sm:gap-4 gap-2 ">
-                    <Button type="submit" className="bg-yellow-400  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
+                  <div className="grid sm:grid-cols-2  grid-cols-1 lg:grid-cols-1  w-full lg:w-[224px] sm:gap-4 gap-2 ">
+                    <Button type="submit" className="bg-yellow-400 cursor-pointer  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
                       Xabar Yuborish
                     </Button>
                     <Button
                       type="submit"
                       variant="outline"
-                      className="bg-white text-black h-[40px]  2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
+                      className="bg-white text-black h-[40px] cursor-pointer  2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
                     >
                       MyGroup bron qilish
                     </Button>

@@ -9,23 +9,36 @@ import FormTextarea from "../form-custom/textarea"
 import { Label } from "../ui/label"
 import FormInput from "../form-custom/input"
 import PhoneField from "../form-custom/phone-field"
-import { useGet } from "@/services/https"
+import { useGet, usePost } from "@/services/https"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
+import toast from 'react-hot-toast';
+
+
+function formatDate(dateStr: string) {
+  const [day, month, year] = dateStr.split("/").map(Number);
+
+  const date = new Date(year, month - 1, day, 0, 0, 0);
+
+  const formattedDate = date.toISOString().split(".")[0];
+  return formattedDate;
+}
+
+
 
 
 const formSchema = z.object({
-  count_people: z.number().min(1, "Ishtirokchilar soni majburiy!"),
+  count_people: z.string().min(1, "Ishtirokchilar soni majburiy!"),
   arrival: z.string().min(1, "Kelish sanasi majburiy!"),
   departure: z.string().min(1, "Ketish sanasi majburiy!"),
   extra_demands: z.string().min(1, "Qo‘shimcha talablar majburiy!"),
   name: z.string().min(1, "Ism majburiy!"),
-  email: z.string().email("Yaroqli email kiriting!"),
-  phone: z.string().min(1, "Telefon raqam majburiy!"),
+  email: z.string().email("Yaroqli email kiriting!").optional(),
+  phone: z.string().min(1, "Telefon raqam majburiy!").optional(),
   services: z.array(z.number()).min(1, "Kamida bitta xizmat tanlanishi shart!"),
-});
+})
 
 
 type FormType = z.infer<typeof formSchema>;
@@ -33,12 +46,13 @@ type FormType = z.infer<typeof formSchema>;
 
 export default function BookingForm() {
   const { data, isSuccess } = useGet("services");
+  const { mutate } = usePost();
 
 
   const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "count_people": 0,
+      "count_people": "",
       "arrival": "",
       "departure": "",
       "extra_demands": "",
@@ -54,9 +68,37 @@ export default function BookingForm() {
 
   const handleSubmit = (values: FormType) => {
 
-    console.log("Form submitted:", values)
+    const formattedData = ({
+      ...values,
+      arrival: formatDate(values.arrival),
+      departure: formatDate(values.departure),
+    })
+
+    mutate("tourbook", formattedData, {
+      onSuccess: () => {
+        toast.success("Xush kelibsiz! buyurtma qabul qilindi")
+        form.reset();
+      },
+      onError: (error: any) => {
+        if (error.response?.data) {
+          const errors = error.response.data;
+          Object.entries(errors).forEach(([key, message]) => {
+            form.setError(key as keyof FormType, {
+              type: "server",
+              message: message as string,
+            });
+          });
+        } else {
+          toast.error("Xatolik yuz berdi.");
+        }
+      },
+    })
+
+
 
   }
+
+
   return (
     <div id="mygroup" className="sm:py-16 py-8">
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>

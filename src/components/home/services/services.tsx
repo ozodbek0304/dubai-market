@@ -2,47 +2,79 @@ import { Button } from "@/components/ui/button"
 import ServiceCard from "./services-card"
 import { useRouter } from "next/router"
 
+
+export const services = [
+  {
+    icon: "/icons/Ticket.png",
+    title: "Ekskursiya va diqqatga sozovvor joylar chiptalari",
+    description: "Akvaparklar, avtobus sayohatlari va boshqa Dubay sarguzashtlar",
+    link: "/services/excursions",
+    commonServices: [
+      "Eng yaxshi narxlarda ekskursiyalar",
+      "Diqqatga sazovor joylarga chipta xizmati",
+      "Maxsus paket va chegirmalar",
+    ]
+  },
+  {
+    icon: "/icons/car.png",
+    title: "Transfer Xizmatlari ",
+    description: "Aeroportdan va shahar ichida VIP hamda guruh mijozlar uchun qulay transfer xizmatlari.",
+    link: "/services/transport",
+    commonServices: [
+      "Aeroport, Mehmonxona va Shahar Atrofida",
+      "Maxsus VIP Transferlar va Yoqimli Sayohatlar",
+      "Guruh va Jamoaviy Transfer Xizmatlari "
+    ]
+  },
+  {
+    icon: "/icons/unber.png",
+    title: "Mice Group",
+    description: "Korporativ dam olish: restoranlar, yaxtalar va mehmonxonalar",
+    link: "/services/groups",
+    commonServices: [
+      "MICE Guruhlar Uchun Xizmatlar",
+      "Biznes Tadbirlar va Korporativ Sayohatlar",
+      "Kongress, Ko‘rgazma va Incentive Dasturlari"
+    ]
+  },
+  {
+    icon: "/icons/Ticket (2).png",
+    title: "VIP Konsyerj",
+    description: "Dubaydagi har qanday istaklar uchun eksklyuziv xizmat.",
+    link: "/services/concierge",
+    commonServices: [
+      "Shaxsiy Konsyerj va Lifestyle Xizmatlari",
+      "VIP Transport va Haydovchi Xizmati",
+      "Eksklyuziv Tadbirlar va Maxsus Buyurtmalar"
+    ]
+  },
+  {
+    icon: "/icons/Camping.png",
+    title: "Ko’chmas Mulk",
+    description: "Dubayda ko‘chmas mulk xarid qilishingizga yordam beramiz: kvartiralar, villalar, ofislar.",
+    link: "/services/realestate",
+    commonServices: [
+      "Ko'chmas Mulk Bo'yicha Maslahatlar va Yo'l-yo'riq",
+      "Mulk Sotib Olish, Sotish va Ijaraga Berish Xizmatlari",
+      "Investitsiya imkoniyatlari"
+    ]
+  },
+  {
+    icon: "/icons/Airplane.png",
+    title: "Tur Paketlar",
+    description: "Shaxsiy mijozlar uchun Dubay bo‘ylab maxsus sayohatlar.",
+    link: "/services/tours",
+    commonServices: [
+      "O‘zbekistondan Dunyo Bo‘ylab Sayohatlar",
+      "Qulay Transport va Aviabilet Xizmatlari",
+      "Maxsus Tur Paketlari va Ekskursiyalar "
+    ]
+  },
+]
+
 export default function Services() {
   const router = useRouter();
 
-  const services = [
-    {
-      icon: "/icons/Ticket.png",
-      title: "Ekskursiyalar va Diqqatga sazovor joylar chiptalari.",
-      description: "Akvaparklar, avtobus sayohatlari va boshqa Dubay sarguzashtlar",
-      link: "/services/excursions",
-    },
-    {
-      icon: "/icons/car.png",
-      title: "Transport Xizmatlari",
-      description: "Aeroportdan va shahar ichida VIP hamda guruh mijozlar uchun qulay transfer xizmatlari.",
-      link: "/services/transport",
-    },
-    {
-      icon: "/icons/unber.png",
-      title: "MyGroup",
-      description: "Korporativ dam olish: restoranlar, yaxtalar va mehmonxonalar",
-      link: "/services/groups",
-    },
-    {
-      icon: "/icons/Ticket (2).png",
-      title: "VIP Konsyerj",
-      description: "Dubaydagi har qanday istaklar uchun eksklyuziv xizmat.",
-      link: "/services/concierge",
-    },
-    {
-      icon: "/icons/Camping.png",
-      title: "Ko'chmas Mulk",
-      description: "Dubayda ko‘chmas mulk xarid qilishingizga yordam beramiz: kvartiralar, villalar, ofislar.",
-      link: "/services/realestate",
-    },
-    {
-      icon: "/icons/Airplane.png",
-      title: "Tur Paketlar",
-      description: "Shaxsiy mijozlar uchun Dubay bo‘ylab maxsus sayohatlar.",
-      link: "/services/tours",
-    },
-  ]
 
   return (
     <section id="services" className="sm:py-16 py-4 bg-[#F5F7FA] sm:rounded-[64px] sm:p-5 p-3 rounded-2xl">
@@ -57,6 +89,7 @@ export default function Services() {
               title={service.title}
               description={service.description}
               link={service.link}
+              commonServices={service.commonServices}
             />
           ))}
         </div>

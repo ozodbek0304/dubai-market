@@ -9,17 +9,20 @@ import FormInput from "@/components/form-custom/input"
 import PhoneField from "@/components/form-custom/phone-field"
 import FormTextarea from "@/components/form-custom/textarea"
 import { usePost } from "@/services/https"
+import toast from 'react-hot-toast';
 
-interface User {
-  name: string
-  phone: string
-  email: string
-  message: string
+
+type FormType = {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
 }
+
 export default function ContactSection() {
   const { mutate } = usePost();
 
-  const form = useForm<User>({
+  const form = useForm<FormType>({
     defaultValues: {
       name: "",
       phone: "",
@@ -31,20 +34,29 @@ export default function ContactSection() {
 
 
 
-  const onSubmit = (values: User,) => {
+  const onSubmit = (values: FormType,) => {
     mutate("contact-sale", values, {
       onSuccess: () => {
-        alert("Xush kelibsiz! Ushbu sizning ma'lumotlaringiz uchun rahmatli xabar qilingan edilgan.")
+        toast.success("Xush kelibsiz! Xabaringiz yuborildi");
+        form.reset();
       },
-      onError: () => {
-        alert("Xatolik! Ushbu ma'lumotlarni saqlaishda xatolik yuz berdi.")
+      onError: (error: any) => {
+        if (error.response?.data) {
+          const errors = error.response.data;
+          Object.entries(errors).forEach(([key, message]) => {
+            form.setError(key as keyof FormType, {
+              type: "server",
+              message: message as string,
+            });
+          });
+        } else {
+          toast.error("Xatolik yuz berdi.");
+        }
       },
     })
 
   }
 
-   console.log(form.formState.errors);
-   
 
 
   return (
@@ -124,7 +136,7 @@ export default function ContactSection() {
                 methods={form}
                 name="phone"
                 className="mt-1 2xl:h-[50px] h-[40px]"
-                required
+                required={form.watch("email") ? false : true}
               />
               <FormInput
                 methods={form}
@@ -132,7 +144,7 @@ export default function ContactSection() {
                 className="mt-1 2xl:h-[50px] h-[40px] "
                 label="Email"
                 placeholder="Email manzilingiz"
-                required
+                required={form.watch("phone") ? false : true}
               />
               <FormTextarea
                 methods={form}

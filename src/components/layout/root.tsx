@@ -6,6 +6,7 @@ import "@/styles/globals.css"
 import Navbar from "../partials/navbar"
 import ContactSection from "../home/contact/contact"
 import Footer from "../partials/footer"
+import { Toaster } from 'react-hot-toast';
 
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  navbarTheme=false,
+  navbarTheme = false,
 }: Readonly<{
   children: React.ReactNode,
   navbarTheme?: boolean
@@ -24,7 +25,8 @@ export default function RootLayout({
 
 
   return (
-    <div >
+    <div>
+      <Toaster />
       <Navbar navbarTheme={navbarTheme} />
       {children}
       <ContactSection />
