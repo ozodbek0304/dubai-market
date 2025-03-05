@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LanguageComponents from "./language";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -29,6 +30,7 @@ const navLinksMobile = [
 export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
   const router = useRouter();
 
 

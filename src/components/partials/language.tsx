@@ -9,11 +9,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-function LanguageComponents({theme}:{theme:boolean}) {
+function LanguageComponents({ theme }: { theme: boolean }) {
+  const { i18n, t } = useTranslation();
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
+  console.log(i18n);
+
+
   return (
-    <Select defaultValue="uz">
-      <SelectTrigger className={`shadow-none border-none font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}>
+    <Select defaultValue={i18n.language} onValueChange={changeLanguage}>
+      <SelectTrigger className={`shadow-none sm:border-none font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}>
         <SelectValue placeholder="Tilni tanlang" />
         <ChevronDown className={`w-5 h-5 ${theme ? "text-slate-800" : "text-white"}`} />
       </SelectTrigger>
