@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CalendarRange, ChevronRight, CircleCheck, Info, Menu, PhoneCall, Users, X } from "lucide-react";
@@ -55,7 +56,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
         <div className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className={`hover:text-[#FFD700] ${`/${link.href}` == router.asPath ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
-              {link.label}
+              {t(link.label)}
             </Link>
           ))}
           {/* Language */}

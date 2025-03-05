@@ -28,6 +28,7 @@ export default function FormInput<IForm extends FieldValues>({
         register,
         formState: { errors },
     } = methods
+    
 
     const reg = register(name, {
         required: {

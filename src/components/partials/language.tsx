@@ -18,8 +18,7 @@ function LanguageComponents({ theme }: { theme: boolean }) {
     i18n.changeLanguage(lang);
   };
 
-  console.log(i18n);
-
+ 
 
   return (
     <Select defaultValue={i18n.language} onValueChange={changeLanguage}>

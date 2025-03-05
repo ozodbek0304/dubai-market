@@ -1,5 +1,8 @@
 {
-    "welcome": "Bizning saytimizga xush kelibsiz!",
-    "change_language": "Tilni o'zgartirish"
-  }
-  
+  "Bosh sahifa": "Bosh sahifa",
+  "Biz haqimizda": "Biz haqimizda",
+  "Xizmatlar": "Xizmatlar",
+  "MyGroup bron qilish": "MyGroup bron qilish",
+  "Foydalanuvchilar fikrlari": "Foydalanuvchilar fikrlari",
+  "Aloqa": "Aloqa"
+}

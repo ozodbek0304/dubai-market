@@ -1,5 +1,8 @@
 {
-    "welcome": "Welcome to our website!",
-    "change_language": "Change Language"
-  }
-  
+  "Bosh sahifa": "Home",
+  "Biz haqimizda": "About Us",
+  "Xizmatlar": "Services",
+  "MyGroup bron qilish": "MyGroup booking",
+  "Foydalanuvchilar fikrlari": "User reviews",
+  "Aloqa": "Contact"
+}

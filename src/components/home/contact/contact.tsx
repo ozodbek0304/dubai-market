@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import FormInput from "@/components/form-custom/input"
 import PhoneField from "@/components/form-custom/phone-field"
 import FormTextarea from "@/components/form-custom/textarea"
+import { usePost } from "@/services/https"
 
 interface User {
   name: string
@@ -16,6 +17,7 @@ interface User {
   message: string
 }
 export default function ContactSection() {
+  const { mutate } = usePost();
 
   const form = useForm<User>({
     defaultValues: {
@@ -30,10 +32,21 @@ export default function ContactSection() {
 
 
   const onSubmit = (values: User,) => {
-
-    console.log("Form submitted:", values)
+    mutate("contact-sale", values, {
+      onSuccess: () => {
+        alert("Xush kelibsiz! Ushbu sizning ma'lumotlaringiz uchun rahmatli xabar qilingan edilgan.")
+      },
+      onError: () => {
+        alert("Xatolik! Ushbu ma'lumotlarni saqlaishda xatolik yuz berdi.")
+      },
+    })
 
   }
+
+   console.log(form.formState.errors);
+   
+
+
   return (
     <>
       <div id="contact" className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
@@ -122,10 +135,9 @@ export default function ContactSection() {
                 required
               />
               <FormTextarea
-                label="Xabar"
                 methods={form}
+                label="Xabar"
                 name="message"
-                rows={8}
                 wrapperClassName={"h-[120px] "}
                 className="h-full mt-1 bg-white"
                 placeholder="Sizning xabaringiz"

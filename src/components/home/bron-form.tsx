@@ -5,69 +5,54 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useForm } from "react-hook-form"
 import FormDatePicker from "../form-custom/date-picker"
-import FormCheckbox from "../form-custom/checkbox"
 import FormTextarea from "../form-custom/textarea"
 import { Label } from "../ui/label"
 import FormInput from "../form-custom/input"
 import PhoneField from "../form-custom/phone-field"
-import dynamic from "next/dynamic"
+import { useGet } from "@/services/https"
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import ErrorMessage from "../ui/error-message"
+import { Checkbox } from "../ui/checkbox"
 
-const SelectField = dynamic(() => import("../form-custom/select-field"), { ssr: false });
 
-type BronChekbox = "restaurant" | "yacht" | "hotel" | "transport" | "event"
+const formSchema = z.object({
+  count_people: z.number().min(1, "Ishtirokchilar soni majburiy!"),
+  arrival: z.string().min(1, "Kelish sanasi majburiy!"),
+  departure: z.string().min(1, "Ketish sanasi majburiy!"),
+  extra_demands: z.string().min(1, "Qo‘shimcha talablar majburiy!"),
+  name: z.string().min(1, "Ism majburiy!"),
+  email: z.string().email("Yaroqli email kiriting!"),
+  phone: z.string().min(1, "Telefon raqam majburiy!"),
+  services: z.array(z.number()).min(1, "Kamida bitta xizmat tanlanishi shart!"),
+});
 
-const formCheckboxData: { label: string, name: BronChekbox }[] = [
-  {
-    label: "Restoran band qilish",
-    name: "restaurant"
-  },
-  {
-    label: "Yaxtada sayohat",
-    name: "yacht"
-  },
-  {
-    label: "Mehmonxona band qilish",
-    name: "hotel"
-  },
-  {
-    label: "Transport xizmatlari",
-    name: "transport"
-  },
-  {
-    label: "Maxsus bayram uyushtirish",
-    name: "event"
-  },
-]
 
-const categories = [
-  { id: "tech", name: "Texnologiya" },
-  { id: "science", name: "Fan" },
-  { id: "business", name: "Biznes" },
-];
+type FormType = z.infer<typeof formSchema>;
+
 
 export default function BookingForm() {
+  const { data, isSuccess } = useGet("services");
 
 
-  const form = useForm<any>({
+  const form = useForm<FormType>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      participants: "",
-      arrivalDate: "",
-      departureDate: "",
-      restaurant: false,
-      yacht: false,
-      hotel: false,
-      transport: false,
-      event: false,
-      requirements: "",
-      name: "",
-      phone: "",
-      email: "",
+      "count_people": 0,
+      "arrival": "",
+      "departure": "",
+      "extra_demands": "",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "services": []
     }
   })
 
+  const watchedServices = form.watch('services')
 
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: FormType) => {
 
     console.log("Form submitted:", values)
 
@@ -89,22 +74,20 @@ export default function BookingForm() {
           <h2 className="text-xl font-semibold mb-6">Bron qilish ma'lumotlari</h2>
 
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-            <SelectField
+            <FormInput
+              type="number"
               methods={form}
-              name="participants"
+              name="count_people"
+              className="mt-1 2xl:h-[50px] h-[40px]"
               label="Ishtirokchilar sonini tanlang"
               placeholder="Ishtirokchilar sonini tanlang"
-              className="mt-1 "
               required
-              options={categories}
-              optionLabelKey="name"
-              optionValueKey="id"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-end">
               <FormDatePicker
                 methods={form}
-                name="arrivalDate"
+                name="arrival"
                 label="Kelish va ketish sanasi"
                 placeholder="Kelish sanasi"
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
@@ -112,7 +95,7 @@ export default function BookingForm() {
               />
               <FormDatePicker
                 methods={form}
-                name="arrivalDate"
+                name="departure"
                 placeholder="Ketish sanasi"
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
@@ -120,27 +103,49 @@ export default function BookingForm() {
             </div>
 
             <div>
-              <Label className="block text-sm mb-1">
+              <Label className={`block text-sm mb-1 ${form.formState.errors.services ? "text-destructive" : ""}`} >
                 Xizmatlar turi <span className="text-red-500">*</span>
               </Label>
               <div className="w-full mt-1 flex flex-wrap gap-3">
-                {formCheckboxData?.map((item) => (
-                  <FormCheckbox
-                    key={item.name}
-                    methods={form}
-                    name={item.name}
-                    label={item.label}
-                    required
-                  />
+                {isSuccess && data?.map((item: { title: string, id: number }) => (
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox
+                      checked={watchedServices.includes(item.id)}
+                      onCheckedChange={() => {
+                        const updatedServices = watchedServices.includes(item.id)
+                          ? watchedServices.filter((s) => s !== item.id)
+                          : [...watchedServices, item.id];
+
+                        form.setValue("services", updatedServices);
+                        if (updatedServices.length > 0) {
+                          form.clearErrors("services");
+                        }
+                      }}
+                      id={`services-${item.id}`}
+                    />
+                    <Label
+                      htmlFor={`services-${item.id}`}
+                    >
+                      {item.title}
+                    </Label>
+                  </div>
                 ))
                 }
               </div>
+
+
+
+              {form.formState.errors.services && (
+                <ErrorMessage className="mt-2">
+                  {form.formState.errors.services.message?.toString()}
+                </ErrorMessage>
+              )}
             </div>
 
             <FormTextarea
               label="Qo'shimcha talablar"
               methods={form}
-              name="requirements"
+              name="extra_demands"
               rows={8}
               wrapperClassName={"h-[120px]"}
               className="h-full mt-1"
