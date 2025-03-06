@@ -16,7 +16,6 @@ import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
 import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
-import Head from "next/head"
 
 
 function formatDate(dateStr: string) {
@@ -110,9 +109,7 @@ export default function BookingForm() {
 
   return (
     <div id="mygroup" className="sm:py-16 py-8">
-      <Head>
-          <title>{t("MyGroup uchun bron qilish")}</title>
-        </Head>
+
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
         <div className="relative">

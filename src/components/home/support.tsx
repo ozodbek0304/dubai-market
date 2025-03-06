@@ -3,7 +3,6 @@ import { Card, CardContent } from '../ui/card'
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import { useTranslation } from 'react-i18next'
-import Head from 'next/head'
 
 const data = [
     {
@@ -32,9 +31,7 @@ function SupportPages() {
     const { t } = useTranslation();
     return (
         <div className='sm:py-14 py-8 sm:p-0 p-3 mx-auto max-w-[1000px]  2xl:max-w-7xl'>
-             <Head>
-                <title>{t("Nima uchun bizni tanlashadi?")}</title>
-            </Head>
+          
             <h1 className='sm:mb-12 mb-6 font-bold text-center sm:text-start 2xl:text-[48px] sm:text-[36px] text-[24px]'>{t("Nima uchun bizni tanlashadi?")}</h1>
 
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 gap-6'>

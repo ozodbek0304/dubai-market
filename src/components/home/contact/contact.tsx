@@ -12,7 +12,6 @@ import { usePost } from "@/services/https"
 import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
 import { ServerErrorResponse } from "../bron-form"
-import Head from "next/head"
 
 
 type FormType = {
@@ -66,24 +65,23 @@ export default function ContactSection() {
   return (
     <>
       <div id="contact" className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
-        <Head>
-          <title>{t("Biz bilan bog'laning")}</title>
-        </Head>
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
           <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
             <h2 className="text-2xl font-bold mb-6 text-center sm:text-start">{t("Biz bilan bog'laning")}</h2>
 
             <div className="space-y-6 mb-8">
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5" />
+              <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-2">
                   <a href="tel:+971581694135" className="text-[#020105] hover:text-yellow-500">
-                    UAE <br />
+                    <div className="flex items-center gap-2"> <Phone className="w-4 h-4" /> UAE</div>
                     +971 58 169 4135
                   </a>
+                </div>
+
+                <div className="flex flex-col gap-2">
                   <a href="tel:+998773090070" className="text-[#020105] hover:text-yellow-500">
-                    Uzbekistan <br />
+                    <div className="flex items-center gap-2">   <Phone className="w-4 h-4" />  Uzbekistan </div>
                     +998 77 309 00 70
                   </a>
                 </div>
@@ -91,7 +89,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
+                  className="w-5 h-5 "
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -99,11 +97,11 @@ export default function ContactSection() {
                 >
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contact@mtoursdubai.com" className="text-gray-600">
-                  contact@mtoursdubai.com
+                <a target="_blank" href="mailto:operations@magical-desert.com" className="text-gray-600 hover:text-yellow-500">
+                  operations@magical-desert.com
                 </a>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -115,7 +113,7 @@ export default function ContactSection() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span className="text-gray-600">{t("Dubai, United Arab Emirates")}</span>
+                <a target="_blank" href="https://maps.app.goo.gl/tSpST7dYCv745WuE7?g_st=com.google.maps.preview.copy" className="text-gray-600 hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
               </div>
             </div>
 

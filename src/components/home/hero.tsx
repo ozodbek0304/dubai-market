@@ -64,7 +64,7 @@ export default function Hero() {
     <section className="relative sm:p-5 p-3 ">
 
       <Head>
-        <title>{t("Bosh sahifa")}</title>
+        <title>{t("Dubaydagi shaxsiy vip xizmatlar")}</title>
       </Head>
 
       {/* Background image */}

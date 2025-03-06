@@ -26,12 +26,12 @@ export default function Footer() {
 
             <div>
               <h4 className="text-[#5D5D5F] mb-2">{t("Manzil")}</h4>
-              <a href="#" className="text-[#020105] hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
+              <a target="_blank" href="https://maps.app.goo.gl/tSpST7dYCv745WuE7?g_st=com.google.maps.preview.copy" className="text-[#020105] hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
             </div>
 
             <div>
               <h4 className="text-[#5D5D5F] mb-2">{t("Elektron pochta")}</h4>
-              <a href="mailto:contact@mtoursdubai.com<" className="text-[#020105] hover:text-yellow-500">contact@mtoursdubai.com</a>
+              <a href="mailto:operations@magical-desert.com" className="text-[#020105] hover:text-yellow-500">operations@magical-desert.com</a>
 
             </div>
           </div>

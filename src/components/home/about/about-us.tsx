@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image"
 import { useTranslation } from "react-i18next";
 
@@ -28,10 +27,6 @@ export default function AboutUs() {
   return (
     <section id="about" className="sm:py-16 py-8  ">
 
-      <Head>
-        <title>{t("Biz Haqimizda")}</title>
-      </Head>
-
       <div className="2xl:max-w-7xl max-w-[1000px]  mx-auto">
         <div className="grid md:grid-cols-2 gap-8 items-stretch  ">
           <div className="bg-[#F5F5F5] sm:p-12 p-3 rounded-[32px] h-full">
@@ -59,7 +54,7 @@ export default function AboutUs() {
             <Image
               width={588}
               height={670}
-              src="/about.png"
+              src="/about.jpg"
               alt="Dubai skyline view from a luxury apartment"
               className="h-full w-full object-cover"
             />

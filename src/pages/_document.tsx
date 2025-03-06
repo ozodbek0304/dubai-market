@@ -36,7 +36,7 @@ export default function Document() {
         />
         <meta name="twitter:image" content="/logo.png" />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico"  />
       </Head>
       <body className="antialiased">
         <Main />
