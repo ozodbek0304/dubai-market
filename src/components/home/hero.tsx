@@ -88,13 +88,15 @@ export default function Hero() {
           </div>
 
           <div className="w-full ">
-            <Card className="bg-white/20 backdrop-blur-sm border-0 p-0">
+            <Card
+
+              className="bg-white/20 backdrop-blur-sm border-0 p-0">
               <CardContent className="sm:p-6 2xl:p-10 p-3">
                 <p className="text-start 2xl:text-[24px] sm:text-lg text-[14px] text-white 2xl:mb-4 sm:mb-2">
                   {t("Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing")}
                 </p>
 
-                <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col lg:flex-row justify-between items-start lg:gap-8 gap-4 ">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col  justify-end items-end  gap-3 ">
                   <div className="w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-[8px] mb-[8px]">
                       <FormInput
@@ -134,17 +136,11 @@ export default function Hero() {
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2  grid-cols-1 lg:grid-cols-1  w-full lg:w-[224px] sm:gap-4 gap-2 ">
-                    <Button type="submit" className="bg-yellow-400 cursor-pointer  hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
+                  <div className=" w-full flex justify-end ">
+                    <Button type="submit" className="bg-yellow-400 cursor-pointer sm:w-[220px] w-full   hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
                       {t("Xabar Yuborish")}
                     </Button>
-                    <Button
-                      type="submit"
-                      variant="outline"
-                      className="bg-white text-black h-[40px] cursor-pointer  2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md border-white hover:bg-gray-100"
-                    >
-                      {t("MyGroup bron qilish")}
-                    </Button>
+
                   </div>
                 </form>
               </CardContent>

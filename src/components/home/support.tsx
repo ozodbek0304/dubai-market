@@ -48,7 +48,9 @@ function SupportPages() {
             </div>
 
             <div className="sm:mt-12 mt-8 text-center">
-                <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">{t("Biz bilan bog'laning")}</Button>
+                <Button className="bg-[#FFD700] cursor-pointer hover:bg-yellow-600 2xl:h-[60px] sm:h-[50px] h-[40px] py-0 px-8 sm:text-[18px] text-sm text-black">
+                  <a href="#contact">  {t("Biz bilan bog'laning")}</a>
+                    </Button>
             </div>
         </div>
     )
