@@ -2,10 +2,15 @@
 
 import { Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+
+
   return (
     <footer className="border-t bg-[#F5F7FA] sm:py-12 py-6">
       <div className="2xl:max-w-7xl max-w-[1000px] mx-auto px-4 lg:p-0 p-3">
@@ -39,28 +44,28 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center sm:items-start 2xl:gap-5 gap-3">
-            <a href="#" className="text-[#020105] hover:text-yellow-500">
+            <Link href={"/"} className="text-[#020105] hover:text-yellow-500">
               {t("Bosh sahifa")}
-            </a>
-            <a href="#services" className="text-[#020105] hover:text-yellow-500">
+            </Link>
+            <Link href={pathname === "/" ? "#services" : "/#services"} className="text-[#020105] hover:text-yellow-500">
               {t("Xizmatlar")}
-            </a>
-            <a href="#reviews" className="text-[#020105] hover:text-yellow-500">
+            </Link>
+            <Link href={pathname === "/" ? "#reviews" : "/#reviews"} className="text-[#020105] hover:text-yellow-500">
               {t("Foydalanuvchilar fikrlari")}
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-col items-center sm:items-start 2xl:gap-5 gap-3">
 
-            <a href="#about" className="text-[#020105] hover:text-yellow-500">
+            <Link href={pathname === "/" ? "#about" : "/#about"} className="text-[#020105] hover:text-yellow-500">
               {t("Biz haqimizda")}
-            </a>
-            <a href="#mygroup" className="text-[#020105] hover:text-yellow-500">
+            </Link>
+            <Link href={pathname === "/" ? "#mygroup" : "/#mygroup"} className="text-[#020105] hover:text-yellow-500">
               {t("MyGroup bron qilish")}
-            </a>
-            <a href="#contact" className="text-[#020105] hover:text-yellow-500">
+            </Link>
+            <Link href={pathname === "/" ? "#contact" : "/#contact"} className="text-[#020105] hover:text-yellow-500">
               {t("Aloqa")}
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-col sm:py-0 py-6 items-center sm:items-start gap-2">

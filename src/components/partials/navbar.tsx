@@ -79,7 +79,10 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={`hover:text-[#FFD700] ${`/${link.href}` == (`/#${activeSection}` || router.asPath) ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
+            <Link
+              key={link.href}
+              href={link.href.startsWith("#") ? `/${link.href}` : link.href}
+              className={`hover:text-[#FFD700] ${`/${link.href}` == (`/#${activeSection}` || router.asPath) ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
               {t(link.label)}
             </Link>
           ))}
@@ -102,7 +105,8 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
       {isMenuOpen && (
         <div className="lg:hidden transition-all duration-100  ">
           {navLinksMobile.map((link) => (
-            <Link key={link.href} href={link.href}
+            <Link key={link.href}
+              href={link.href.startsWith("#") ? `/${link.href}` : link.href}
               className={`border-b ${`/${link.href}` == (`/#${activeSection}` || router.asPath) ? "text-[#FFD700]" : ""}  w-full items-center justify-between flex py-3   hover:text-[#FFD700`}
               onClick={() => setIsMenuOpen(false)}>
               <div className="flex items-center gap-2">
