@@ -63,7 +63,6 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
   }, []);
 
 
-  console.log(activeSection);
 
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, CardContent } from '../ui/card'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
@@ -38,6 +38,7 @@ const data = [
 function TravelerPages() {
     const { t } = useTranslation();
     const { push } = useRouter();
+    const [hoveredId, setHoveredId] = useState<string>("");
 
     return (
         <div className='sm:py-14  py-8 max-w-[1000px]  2xl:max-w-7xl sm:p-0 p-3 mx-auto'>
@@ -46,9 +47,14 @@ function TravelerPages() {
 
             <div className='w-full grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
                 {data?.map((item, index) => (
-                    <Card onClick={() => push("/travel/1")} key={index} className={cn("h-[332px] cursor-pointer p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none", item.col)}
+                    <Card
+                        onClick={() => push("/travel/1")}
+                        onMouseEnter={() => setHoveredId(item.icon)}
+                        onMouseLeave={() => setHoveredId("")}
+
+                        key={index} className={cn("h-[332px] cursor-pointer p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none", item.col)}
                         style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url(${item.icon})`,
+                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, ${item.icon === hoveredId ? "0.1" : "0.3"}), rgba(0, 0, 0, ${item.icon === hoveredId ? "0.1" : "0.3"})), url(${item.icon})`,
                             backgroundPosition: "center"
                         }}
                     >
