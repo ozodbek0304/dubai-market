@@ -11,6 +11,7 @@ import { ClassNameValue } from "tailwind-merge"
 import { Label } from "../ui/label"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import ErrorMessage from "../ui/error-message"
+import { useTranslation } from "react-i18next"
 
 interface SelectOption {
     name: string | number
@@ -39,6 +40,9 @@ export default function FormRadioGroup<IForm extends FieldValues>({
     label,
     returnValue = "id",
 }: IProps<IForm>) {
+
+    const { t } = useTranslation();
+
     const {
         field,
         fieldState: { error },
@@ -48,7 +52,7 @@ export default function FormRadioGroup<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label}ni tanlang`,
+                message: `${label}${t("ni tanlang")}`,
             },
         },
     })

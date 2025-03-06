@@ -14,6 +14,7 @@ import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
 import { toast } from "sonner"
 import { useTranslation } from "react-i18next"
+import { useEffect } from "react"
 
 
 function formatDate(dateStr: string) {
@@ -47,9 +48,9 @@ export interface ServerErrorResponse {
 
 
 export default function BookingForm() {
-  const { data, isSuccess } = useGet("services");
+  const { data, isSuccess, refetch } = useGet("services");
   const { mutate } = usePost();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
 
   const form = useForm<FormType>({
@@ -99,6 +100,10 @@ export default function BookingForm() {
 
 
   }
+
+  useEffect(() => {
+    refetch();
+  }, [i18n.language, refetch]);
 
 
 

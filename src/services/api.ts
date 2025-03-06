@@ -1,4 +1,4 @@
-import axios  from 'axios';
+import axios from 'axios';
 
 export const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 export const api = axios.create({
@@ -7,3 +7,10 @@ export const api = axios.create({
 });
 
 
+api.interceptors.request.use((config) => {
+    const language = localStorage.getItem('i18nextLng') || 'en';
+    config.headers['Accept-Language'] = language;
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});

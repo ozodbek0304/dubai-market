@@ -4,44 +4,22 @@ import { cn } from "@/lib/utils"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import { useTranslation } from "react-i18next"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useGet } from "@/services/https"
+import { UserData } from "../home/traveler"
 
-const data = [
-    {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler1.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    },
-    {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler2.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    },
-    {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler3.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    }, {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler4.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    },
-    {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler1.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    },
-    {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
-        icon: "/images/traveler2.png",
-        description: "📍 Dubai, Marina Beach Resort",
-    },
-]
+
+
 export default function TravelsPages() {
     const { push } = useRouter();
-    const { t } = useTranslation();
-    const [hoveredId, setHoveredId] = useState<string>("");
+    const { t, i18n } = useTranslation();
+    const [hoveredId, setHoveredId] = useState<number>(0);
+    const { data: dataTour, isSuccess, refetch } = useGet("tour-example");
 
+
+    useEffect(() => {
+        refetch();
+    }, [i18n.language, refetch]);
 
     return (
         <div className="max-w-[1000px] 2xl:max-w-7xl pt-28 mx-auto sm:px-0 px-3">
@@ -62,14 +40,14 @@ export default function TravelsPages() {
 
 
             <div className='w-full grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 '>
-                {data?.map((item, index) => (
+                {isSuccess && dataTour?.map((item: UserData, index: number) => (
                     <Card
                         onClick={() => push("/travel/1")}
-                        onMouseEnter={() => setHoveredId(item.icon)}
-                        onMouseLeave={() => setHoveredId("")}
+                        onMouseEnter={() => setHoveredId(item.id)}
+                        onMouseLeave={() => setHoveredId(0)}
                         key={index} className={cn("h-[332px] cursor-pointer p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none")}
                         style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, ${item.icon === hoveredId ? "0.1" : "0.3"}), rgba(0, 0, 0, ${item.icon === hoveredId ? "0.1" : "0.3"})), url(${item.icon})`,
+                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, ${item.id === hoveredId ? "0.1" : "0.3"}), rgba(0, 0, 0, ${item.id === hoveredId ? "0.1" : "0.3"})), url(${item.poster})`,
                             backgroundPosition: "center"
                         }}
                     >

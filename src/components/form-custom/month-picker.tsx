@@ -10,6 +10,7 @@ import { ClassNameValue } from "tailwind-merge"
 import { Label } from "../ui/label"
 import ErrorMessage from "../ui/error-message"
 import { MonthPicker } from "../ui/month-picker"
+import { useTranslation } from "react-i18next"
 
 export default function FormMonthPicker<IForm extends FieldValues>({
     name,
@@ -21,6 +22,9 @@ export default function FormMonthPicker<IForm extends FieldValues>({
     required = false,
     wrapperClassName,
 }: IProps<IForm>) {
+
+    const { t } = useTranslation();
+
     const {
         field,
         fieldState: { error },
@@ -30,7 +34,7 @@ export default function FormMonthPicker<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label}ni tanlang`,
+                message: `${label}${t("ni tanlang")}`,
             },
         },
     })

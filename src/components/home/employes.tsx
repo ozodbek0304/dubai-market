@@ -6,72 +6,26 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useTranslation } from "react-i18next"
+import { useGet } from "@/services/https"
+import { useEffect } from "react"
 
-const testimonials = [
-    {
-        id: 1,
-        author: "John Wick",
-        date: "Today",
-        avatar: "/images/traveler4.png",
-        content:
-            "Добрый день! Как правило, раннее бронирование стартует за 6 месяцев, так что сейчас вполне уже можно подобрать интересный вариант для отдыха в октябре. На сайте '1001 Тур' Вы можете оставить заявку...",
-        images: [
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-            "/about.png",
-        ],
-    },
-    {
-        id: 1,
-        author: "John Wick",
-        date: "Today",
-        avatar: "/images/traveler4.png",
-        content:
-            "Добрый день! Как правило, раннее бронирование стартует за 6 месяцев, так что сейчас вполне уже можно подобрать интересный вариант для отдыха в октябре. На сайте '1001 Тур' Вы можете оставить заявку...",
-        images: [
-            "/about.png",
-            "/about.png",
-            "/about.png",
-        ],
-    },
-    {
-        id: 1,
-        author: "John Wick",
-        date: "Today",
-        avatar: "/images/traveler4.png",
-        content:
-            "Добрый день! Как правило, раннее бронирование стартует за 6 месяцев, так что сейчас вполне уже можно подобрать интересный вариант для отдыха в октябре. На сайте '1001 Тур' Вы можете оставить заявку...",
-        images: [
-            "/about.png",
-            "/about.png",
-            "/about.png",
-        ],
-    },
-    {
-        id: 1,
-        author: "John Wick",
-        date: "Today",
-        avatar: "/images/traveler4.png",
-        content:
-            "Добрый день! Как правило, раннее бронирование стартует за 6 месяцев, так что сейчас вполне уже можно подобрать интересный вариант для отдыха в октябре. На сайте '1001 Тур' Вы можете оставить заявку...",
-        images: [
-            "/about.png",
-            "/about.png",
-            "/about.png",
-        ],
-    },
-]
+type UserData = {
+    id: number;
+    name: string;
+    description: string;
+    avatar: string;
+    country: string;
+    images: {
+        image: string;
+        id: number;
+    }[];
+}
 
 
 export default function TestimonialSlider() {
+    const { t, i18n } = useTranslation();
 
-    const { t } = useTranslation();
+    const { data, isSuccess, refetch } = useGet("comments");
 
     const settings = {
         dots: false,
@@ -108,36 +62,39 @@ export default function TestimonialSlider() {
     }
 
 
+    useEffect(() => {
+        refetch();
+    }, [i18n.language, refetch]);
 
     return (
         <section id="reviews" className="w-full overflow-hidden py-12">
-           
+
             <h1 className="sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] max-w-[1000px]  2xl:max-w-7xl mx-auto sm:text-start text-center">{t("Biz haqimizda mijozlar nima deyishadi?")}</h1>
             <Slider {...settings} className="testimonial-slider -mx-2">
-                {testimonials.map((testimonial) => (
+                {isSuccess && data?.map((testimonial:UserData) => (
                     <div key={testimonial.id} className="px-2">
                         <div className="bg-white rounded-lg border p-4 h-full">
                             {/* Author Info */}
                             <div className="flex items-center gap-3 mb-4">
                                 <Avatar className="h-12 w-12">
-                                    <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
+                                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                                     <AvatarFallback>JW</AvatarFallback>
                                 </Avatar>
                                 <div>
-                                    <h3 className="font-medium">{testimonial.author}</h3>
-                                    <p className="text-sm text-gray-500">{testimonial.date}</p>
+                                    <h3 className="font-medium">{testimonial.name}</h3>
+                                    <p className="text-sm text-gray-500">{testimonial.country}</p>
                                 </div>
                             </div>
 
                             {/* Content */}
-                            <p className="text-gray-600 mb-4 line-clamp-3">{testimonial.content}</p>
+                            <p className="text-gray-600 mb-4 line-clamp-3">{testimonial.description}</p>
 
                             {/* Thumbnails */}
                             <div className="flex gap-2 overflow-x-scroll w-full">
                                 {testimonial.images.map((image, index) => (
                                     <div key={index} className="relative min-w-16 h-16 rounded-md overflow-hidden">
                                         <Image priority
-                                            src={image || "/placeholder.svg"}
+                                            src={image.image || "/placeholder.svg"}
                                             alt={`Thumbnail ${index + 1}`}
                                             fill
                                             className="object-cover"

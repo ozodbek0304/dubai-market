@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import Head from "next/head"
+import { useGet } from "@/services/https"
+import { useEffect } from "react"
 
 const data = [
     {
@@ -24,9 +26,26 @@ const services = [
     "Maxsus biznes tarmoq'i qurish",
     "Iman Gadzhi bilan shaxsiy murabbiyllik seansi",
 ]
-export default function TravelsDetailsPages() {
-    const { t } = useTranslation();
 
+
+type UserData = {
+    id: number;
+    title: string;
+    description: string;
+    images: {
+        image: string;
+        id: number
+    }[];
+}
+
+export default function TravelsDetailsPages() {
+    const { t, i18n } = useTranslation();
+    const { data: dataTour, isSuccess, refetch } = useGet("tour-example");
+
+
+    useEffect(() => {
+        refetch();
+    }, [i18n.language, refetch]);
 
     return (
         <div className="max-w-[1000px] 2xl:max-w-7xl pt-28 mx-auto lg:px-0 px-3">

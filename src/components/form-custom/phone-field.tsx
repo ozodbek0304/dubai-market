@@ -71,7 +71,7 @@ export default function PhoneField<IForm extends FieldValues>({
                 if (required) {
                     isValid = isPhoneValid(v)
                     if (!isValid) {
-                        err = "To'g'ri va to'liq to'ldiring"
+                        err = t("To'g'ri va to'liq to'ldiring")
                     }
                 }
 

@@ -5,6 +5,7 @@ import { ClassNameValue } from "tailwind-merge"
 import { Input, InputProps } from "../ui/input"
 import { Label } from "../ui/label"
 import ErrorMessage from "../ui/error-message"
+import { useTranslation } from "react-i18next"
 
 interface IProps<IForm extends FieldValues> {
     methods: UseFormReturn<IForm>
@@ -29,12 +30,12 @@ export default function FormInput<IForm extends FieldValues>({
         register,
         formState: { errors },
     } = methods
-    
+     const { t } = useTranslation();
 
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label || props.placeholder}ni kiriting`,
+            message: `${label || props.placeholder}${t("ni kiriting")}`,
         },
     })
 
