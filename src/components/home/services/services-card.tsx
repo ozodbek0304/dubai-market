@@ -15,13 +15,15 @@ interface ServiceCardProps {
 export default function ServiceCard({ icon, title, description, commonServices }: ServiceCardProps) {
   const { t } = useTranslation();
 
-  
+
   return (
     <Card className="h-full shadow-none border-none"
       style={{ boxShadow: "0px 15px 76px 0px #44485B1F" }}
     >
       <CardContent className="pt-0">
-        <Image priority width={64} height={64} className="mb-6" src={icon} alt={t(title)} />
+        <div className='w-16 h-16 mb-6'>
+          <Image priority width={200} height={200} src={icon} alt={t(title)} />
+        </div>
         <h3 className="text-lg 2xl:text-xl font-bold mb-3">{t(title)}</h3>
         <p className="text-gray-600 text-sm">{t(description)}</p>
       </CardContent>

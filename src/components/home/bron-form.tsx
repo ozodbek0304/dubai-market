@@ -115,7 +115,7 @@ export default function BookingForm() {
         <div className="relative">
           <h1 className="sm:text-2xl text-center sm:text-start text-xl font-bold lg:mb-6 mb-2">{t("MyGroup uchun bron qilish")}</h1>
           <div className="w-[320px] hidden lg:block h-[256px] absolute top-[55%] translate-y-[-55%] mx-auto">
-            <Image priority src={"/icons/star-icon.png"} width={250} height={250} alt="form_icon" />
+            <Image priority src={"/icons/star-icon.png"} width={300} height={300} alt="form_icon" />
           </div>
 
           <p className="lg:max-w-[320px]  text-sm 2xl:text-md">

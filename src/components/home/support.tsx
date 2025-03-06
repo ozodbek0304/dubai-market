@@ -39,7 +39,7 @@ function SupportPages() {
                     <Card key={index} className="h-full shadow-[3px 19px 72.5px 0px #0000000F] border-none">
                         <CardContent className="pt-0">
                             <div className='w-16 h-16 mb-6'>
-                            <Image priority width={500} height={500}  src={item.icon} alt={t(item.title)} />
+                            <Image priority width={200} height={200}  src={item.icon} alt={t(item.title)} />
                             </div>
                             <h3 className="text-xl font-bold mb-3">{t(item.title)}</h3>
                             <p className="text-gray-600 text-sm">{t(item.description)}</p>
