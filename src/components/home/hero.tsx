@@ -81,7 +81,7 @@ export default function Hero() {
             <div className="mb-6">
               <Image priority height={90} width={340} src="/logo.png" alt="MD Tours" className="h-16 mx-auto" />
             </div>
-            <h1 className="text-2xl md:text-3xl lg:text-5xl  mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-black  mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
             <p className="text-sm md:text-xl ">
               &ldquo;&ldquo;{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}&rdquo;
             </p>
