@@ -2,7 +2,6 @@
 
 import type React from "react"
 import type { Metadata } from "next"
-import "@/styles/globals.css"
 import Navbar from "../partials/navbar"
 import ContactSection from "../home/contact/contact"
 import Footer from "../partials/footer"

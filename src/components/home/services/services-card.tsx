@@ -12,7 +12,7 @@ interface ServiceCardProps {
 
 
 
-export default function ServiceCard({ icon, title, description, link, commonServices }: ServiceCardProps) {
+export default function ServiceCard({ icon, title, description, commonServices }: ServiceCardProps) {
   const { t } = useTranslation();
   return (
     <Card className="h-full shadow-none border-none"

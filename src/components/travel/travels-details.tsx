@@ -1,24 +1,19 @@
 import Link from "next/link"
-import { Card, CardContent } from "../ui/card"
+import { Card } from "../ui/card"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
+import Head from "next/head"
 
 const data = [
     {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler1.png",
-        description: "📍 Dubai, Marina Beach Resort",
     },
     {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler2.png",
-        description: "📍 Dubai, Marina Beach Resort",
     },
     {
-        title: "Millianer Iman Gadzhi bilan Dubayda VIP tushlik",
         icon: "/images/traveler3.png",
-        description: "📍 Dubai, Marina Beach Resort",
     },
 ]
 
@@ -28,13 +23,16 @@ const services = [
     "Dubai bo'ylab hashamatli VIP sayohat",
     "Maxsus biznes tarmoq'i qurish",
     "Iman Gadzhi bilan shaxsiy murabbiyllik seansi",
-  ]
+]
 export default function TravelsDetailsPages() {
-     const { t } = useTranslation();
+    const { t } = useTranslation();
 
 
     return (
         <div className="max-w-[1000px] 2xl:max-w-7xl pt-28 mx-auto lg:px-0 px-3">
+            <Head>
+                <title>{t("Biz sayohatlarini uyushtirgan mashhurlar")}</title>
+            </Head>
             {/* Breadcrumb */}
             <div className="py-3 text-sm text-center">
                 <Link href="/" className="text-gray-500 hover:text-gray-700">
@@ -56,10 +54,6 @@ export default function TravelsDetailsPages() {
                             backgroundPosition: "center"
                         }}
                     >
-                        <CardContent className="p-4 flex flex-col h-full justify-end">
-                            <h3 className="text-xl text-white font-bold mb-2">{t(item.title)}</h3>
-                            <p className="text-white text-md">{t(item.description)}</p>
-                        </CardContent>
                     </Card>
                 ))
                 }
@@ -67,7 +61,7 @@ export default function TravelsDetailsPages() {
             <div className="py-5 space-y-3">
                 <h1 className="2xl:text-[48px] font-bold sm:text-[36px] text-[28px]">Millianer Iman Gadzhi bilan Dubayda VIP tushlik</h1>
 
-                <p>M tours da biz eng yuqori darajadagi mijozlarimizga, raqamli marketing va biznes sohasida eng ta’sirli shaxslardan biri bo'lgan Iman Gadzhi bilan Dubai shahrida bir martalik noyob imkoniyatni taqdim etishdan faxrlanamiz. Ushbu maxsus VIP paketining bir qismi sifatida biz hashamat, shaxsiy murabbiylik va unutilmas tajribalarni birlashtirib, sizga abadiy taassurot qoldiradigan sayohatni tashkil etdik.</p>
+                <p>{"M tours da biz eng yuqori darajadagi mijozlarimizga, raqamli marketing va biznes sohasida eng ta’sirli shaxslardan biri bo'lgan Iman Gadzhi bilan Dubai shahrida bir martalik noyob imkoniyatni taqdim etishdan faxrlanamiz. Ushbu maxsus VIP paketining bir qismi sifatida biz hashamat, shaxsiy murabbiylik va unutilmas tajribalarni birlashtirib, sizga abadiy taassurot qoldiradigan sayohatni tashkil etdik."}</p>
             </div>
 
             <section className="mt-12">

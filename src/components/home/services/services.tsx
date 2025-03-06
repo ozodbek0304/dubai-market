@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import ServiceCard from "./services-card"
 import { useRouter } from "next/router"
 import { useTranslation } from "react-i18next";
+import Head from "next/head";
 
 
 export const services = [
@@ -80,6 +81,9 @@ export default function Services() {
 
   return (
     <section id="services" className="sm:py-16 py-4 bg-[#F5F7FA] sm:rounded-[64px] sm:p-5 p-3 rounded-2xl">
+      <Head>
+        <title>{t("Bizning xizmatlarimiz")}</title>
+      </Head>
       <div className="2xl:max-w-7xl max-w-[1000px]  mx-auto">
         <h2 className="sm:text-3xl text-2xl font-bold text-center sm:text-start sm:mb-12 mb-4">{t("Bizning xizmatlarimiz")}</h2>
 

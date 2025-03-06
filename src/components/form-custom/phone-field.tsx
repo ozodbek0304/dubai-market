@@ -45,7 +45,7 @@ export default function PhoneField<IForm extends FieldValues>({
             return phoneUtil.isValidNumber(
                 phoneUtil.parseAndKeepRawInput(phone),
             )
-        } catch (error) {
+        } catch {
             return false
         }
     }
@@ -64,8 +64,8 @@ export default function PhoneField<IForm extends FieldValues>({
                     val ?
                         val.startsWith("+") ?
                             val
-                        :   `+${val}`
-                    :   ""
+                            : `+${val}`
+                        : ""
                 let err = ""
                 let isValid = true
                 if (required) {
@@ -86,8 +86,8 @@ export default function PhoneField<IForm extends FieldValues>({
         (value as string) ?
             value.startsWith("+") ?
                 value
-            :   `+${value}`
-        :   ""
+                : `+${value}`
+            : ""
 
     return (
         <fieldset

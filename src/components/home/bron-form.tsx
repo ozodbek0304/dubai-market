@@ -16,6 +16,7 @@ import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
 import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
+import Head from "next/head"
 
 
 function formatDate(dateStr: string) {
@@ -41,6 +42,12 @@ const formSchema = z.object({
   services: z.array(z.number()).min(1, "Kamida bitta xizmat tanlanishi shart!"),
 })
 
+
+export interface ServerErrorResponse {
+  response?: {
+    data?: Record<string, string>;
+  };
+}
 
 type FormType = z.infer<typeof formSchema>;
 
@@ -81,7 +88,7 @@ export default function BookingForm() {
         toast.success(t("Xush kelibsiz! buyurtma qabul qilindi"))
         form.reset();
       },
-      onError: (error: any) => {
+      onError: (error: ServerErrorResponse) => {
         if (error.response?.data) {
           const errors = error.response.data;
           Object.entries(errors).forEach(([key, message]) => {
@@ -103,6 +110,9 @@ export default function BookingForm() {
 
   return (
     <div id="mygroup" className="sm:py-16 py-8">
+      <Head>
+          <title>{t("MyGroup uchun bron qilish")}</title>
+        </Head>
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
         <div className="relative">
@@ -112,7 +122,7 @@ export default function BookingForm() {
           </div>
 
           <p className="lg:max-w-[320px]  text-sm 2xl:text-md">
-          Biz har qanday guruh va oilalar uchun sayohatlar, transferlar va boshqa xizmatlarni tashkil qilamiz. Shuningdek, Dubayda VIP sayohatlarni tashkil qilish bo‘yicha ixtisoslashgan eksklyuziv kompaniyamiz. Maqsadimiz – hashamat, qulaylik va shaxsiy yondashuvni qadrlaydigan mijozlarimizga noyob va shaxsiylashtirilgan sayohat xizmatlarini taqdim etish. Har bir sayohatingizni unutilmas tajribaga aylantirishga intilamiz.
+          {t("Biz har qanday guruh va oilalar uchun sayohatlar, transferlar va boshqa xizmatlarni tashkil qilamiz. Shuningdek, Dubayda VIP sayohatlarni tashkil qilish bo‘yicha ixtisoslashgan eksklyuziv kompaniyamiz. Maqsadimiz – hashamat, qulaylik va shaxsiy yondashuvni qadrlaydigan mijozlarimizga noyob va shaxsiylashtirilgan sayohat xizmatlarini taqdim etish. Har bir sayohatingizni unutilmas tajribaga aylantirishga intilamiz.")}
           </p>
 
         </div>
@@ -156,7 +166,7 @@ export default function BookingForm() {
               </Label>
               <div className="w-full mt-1 flex flex-wrap gap-3">
                 {isSuccess && data?.map((item: { title: string, id: number }) => (
-                  <div className="flex items-center gap-2 cursor-pointer">
+                  <div key={item.id} className="flex items-center gap-2 cursor-pointer">
                     <Checkbox
                       checked={watchedServices.includes(item.id)}
                       onCheckedChange={() => {

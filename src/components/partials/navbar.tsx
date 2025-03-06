@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import LanguageComponents from "./language";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 
 
@@ -49,7 +50,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
       <div className={`2xl:max-w-7xl max-w-[1000px] mx-auto  flex justify-between ${(isScrolled || navbarTheme || isMenuOpen) ? "items-center   border-b lg:border-none " : "items-end "} h-20`}>
         {/* Logo */}
         <Link href="/" className=" lg:w-40 w-32">
-          <img src={(isScrolled || navbarTheme || isMenuOpen) ? "../logo-dark.png" : "../logo.png"} alt="Logo" className="h-full w-full object-contain" />
+          <Image priority height={79} width={192} src={(isScrolled || navbarTheme || isMenuOpen) ? "/logo-dark.png" : "/logo.png"} alt="Logo" className="h-full w-full object-contain" />
         </Link>
 
         {/* Desktop Menu */}

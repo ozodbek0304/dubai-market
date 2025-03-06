@@ -11,6 +11,8 @@ import FormTextarea from "@/components/form-custom/textarea"
 import { usePost } from "@/services/https"
 import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
+import { ServerErrorResponse } from "../bron-form"
+import Head from "next/head"
 
 
 type FormType = {
@@ -42,7 +44,7 @@ export default function ContactSection() {
         toast.success(t("Xush kelibsiz! Xabaringiz yuborildi"));
         form.reset();
       },
-      onError: (error: any) => {
+      onError: (error: ServerErrorResponse) => {
         if (error.response?.data) {
           const errors = error.response.data;
           Object.entries(errors).forEach(([key, message]) => {
@@ -64,6 +66,9 @@ export default function ContactSection() {
   return (
     <>
       <div id="contact" className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
+        <Head>
+          <title>{t("Biz bilan bog'laning")}</title>
+        </Head>
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
           <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
@@ -74,13 +79,11 @@ export default function ContactSection() {
                 <Phone className="w-5 h-5" />
                 <div className="flex flex-col gap-2">
                   <a href="tel:+971581694135" className="text-[#020105] hover:text-yellow-500">
-                    UAE
-                    call, whatsaap, telegram <br />
+                    UAE <br />
                     +971 58 169 4135
                   </a>
                   <a href="tel:+998773090070" className="text-[#020105] hover:text-yellow-500">
-                    Uzbekistan
-                    call, whtsaap telegram <br />
+                    Uzbekistan <br />
                     +998 77 309 00 70
                   </a>
                 </div>
@@ -117,13 +120,13 @@ export default function ContactSection() {
             </div>
 
             <div className="flex gap-6">
-              <a href="#" className="">
+              <a href="https://www.instagram.com/md_tours.ae?igsh=MjRuamhzdmY5NGZn&utm_source=qr" target="_blank">
                 <Image priority src="/icons/instagram.png" alt="instagram" width={40} height={40} />
               </a>
-              <a href="#" className="">
+              <a href="https://t.me/DubaiMdtour" target="_blank">
                 <Image priority src="/icons/telegram.png" alt="telegram" width={40} height={40} />
               </a>
-              <a href="#" className="">
+              <a href="https://api.whatsapp.com/send/?phone=971581694135&text&type=phone_number&app_absent=0" target="_blank">
                 <Image priority src="/icons/phone.png" alt="phone" width={40} height={40} />
               </a>
             </div>

@@ -4,7 +4,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -12,7 +11,7 @@ import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 function LanguageComponents({ theme }: { theme: boolean }) {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -29,9 +28,9 @@ function LanguageComponents({ theme }: { theme: boolean }) {
 
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="uz">O'zbek</SelectItem>
-          <SelectItem value="en">English</SelectItem>
-          <SelectItem value="ru">Русский</SelectItem>
+          <SelectItem value="uz">{"O'zbek"}</SelectItem>
+          <SelectItem value="en">{"English"}</SelectItem>
+          <SelectItem value="ru">{"Русский"}</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

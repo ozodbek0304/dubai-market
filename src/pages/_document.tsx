@@ -24,7 +24,7 @@ export default function Document() {
           property="og:description"
           content="Dubayga tezkor va arzon sayohat qiling! Eng yaxshi turpaketlar, mehmonxonalar va ekskursiyalarni tanlang."
         />
-        <meta property="og:image" content="/dubai-travel.jpg" />
+        <meta property="og:image" content="/logo.png" />
         <meta property="og:url" content="https://sizningsaytingiz.com" />
 
         {/* Twitter uchun meta teglar */}
@@ -34,10 +34,9 @@ export default function Document() {
           name="twitter:description"
           content="Dubayga qulay va arzon sayohat qiling. Eng yaxshi turpaketlar siz uchun!"
         />
-        <meta name="twitter:image" content="/dubai-travel.jpg" />
+        <meta name="twitter:image" content="/logo.png" />
 
         <link rel="icon" href="/favicon.ico" />
-        <title>Dubay Sayohati | Arzon va Qulay Turpaketlar</title>
       </Head>
       <body className="antialiased">
         <Main />

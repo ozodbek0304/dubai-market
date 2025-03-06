@@ -10,6 +10,9 @@ import PhoneField from "../form-custom/phone-field"
 import { usePost } from "@/services/https"
 import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
+import { ServerErrorResponse } from "./bron-form"
+import Image from "next/image"
+import Head from "next/head"
 
 
 interface FormType {
@@ -39,7 +42,7 @@ export default function Hero() {
         toast.success(t("Xush kelibsiz! Xabaringiz yuborildi"));
         form.reset();
       },
-      onError: (error: any) => {
+      onError: (error: ServerErrorResponse) => {
         if (error.response?.data) {
           const errors = error.response.data;
           Object.entries(errors).forEach(([key, message]) => {
@@ -59,6 +62,11 @@ export default function Hero() {
 
   return (
     <section className="relative sm:p-5 p-3 ">
+
+      <Head>
+        <title>{t("Bosh sahifa")}</title>
+      </Head>
+
       {/* Background image */}
       <div
         className="inset-0 bg-cover bg-no-repeat bg-center p-3 sm:p-6 sm:pb-[80px] pb-24 rounded-[32px] lg:rounded-[64px] z-0 "
@@ -71,11 +79,11 @@ export default function Hero() {
         <div className="relative  z-10 h-full flex flex-col justify-center items-center 2xl:max-w-7xl max-w-[1000px]  mx-auto pt-24">
           <div className="text-center text-white mb-8">
             <div className="mb-6">
-              <img src="logo.png" alt="MD Tours" className="h-16 mx-auto" />
+              <Image priority height={90} width={340} src="/logo.png" alt="MD Tours" className="h-16 mx-auto" />
             </div>
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl  mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
             <p className="text-sm md:text-xl ">
-              ""{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}"
+              &ldquo;&ldquo;{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}&rdquo;
             </p>
           </div>
 

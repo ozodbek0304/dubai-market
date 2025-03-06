@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useTranslation } from "react-i18next"
+import Head from "next/head"
 
 const testimonials = [
     {
@@ -71,7 +72,7 @@ const testimonials = [
 
 export default function TestimonialSlider() {
 
-     const { t } = useTranslation();
+    const { t } = useTranslation();
 
     const settings = {
         dots: false,
@@ -111,6 +112,10 @@ export default function TestimonialSlider() {
 
     return (
         <div id="reviews" className="w-full overflow-hidden py-12">
+            <Head>
+                <title>{t("Biz haqimizda mijozlar nima deyishadi?")}</title>
+            </Head>
+            
             <h1 className="sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] max-w-[1000px]  2xl:max-w-7xl mx-auto sm:text-start text-center">{t("Biz haqimizda mijozlar nima deyishadi?")}</h1>
             <Slider {...settings} className="testimonial-slider -mx-2">
                 {testimonials.map((testimonial) => (
