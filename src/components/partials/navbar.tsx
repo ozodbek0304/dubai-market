@@ -55,6 +55,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
           }
         });
       },
+      { threshold: 0.4 }
     );
 
     sections.forEach((section) => observer.observe(section));

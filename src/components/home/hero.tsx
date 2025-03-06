@@ -133,6 +133,7 @@ export default function Hero() {
                       placeholder={t("Xabar")}
                       className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       rows={3}
+                      required
                     />
                   </div>
 
