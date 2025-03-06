@@ -19,6 +19,7 @@ export default function FormInput<IForm extends FieldValues>({
     methods,
     name,
     label,
+    type="text",
     wrapperClassName,
     hideError = false,
     required = false,
@@ -55,7 +56,7 @@ export default function FormInput<IForm extends FieldValues>({
                 </Label>
             )}
             <Input
-                type={"text"}
+                type={type}
                 placeholder={label}
                 id={name}
                 fullWidth

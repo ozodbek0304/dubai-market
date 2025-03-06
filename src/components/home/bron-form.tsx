@@ -10,8 +10,6 @@ import { Label } from "../ui/label"
 import FormInput from "../form-custom/input"
 import PhoneField from "../form-custom/phone-field"
 import { useGet, usePost } from "@/services/https"
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
 import { toast } from "sonner"
@@ -30,25 +28,22 @@ function formatDate(dateStr: string) {
 
 
 
-const formSchema = z.object({
-  count_people: z.string().min(1, ("Ishtirokchilar soni majburiy!")),
-  arrival: z.string().min(1, "Kelish sanasi majburiy!"),
-  departure: z.string().min(1, "Ketish sanasi majburiy!"),
-  extra_demands: z.string().min(1, "Qo‘shimcha talablar majburiy!"),
-  name: z.string().min(1, "Ism majburiy!"),
-  email: z.string().email("Yaroqli email kiriting!").optional(),
-  phone: z.string().min(1, "Telefon raqam majburiy!").optional(),
-  services: z.array(z.number()).min(1, "Kamida bitta xizmat tanlanishi shart!"),
-})
-
+type FormType = {
+  count_people: string;
+  arrival: string;
+  departure: string;
+  extra_demands: string;
+  name: string;
+  email: string;
+  phone: string;
+  services: number[];
+}
 
 export interface ServerErrorResponse {
   response?: {
     data?: Record<string, string>;
   };
 }
-
-type FormType = z.infer<typeof formSchema>;
 
 
 export default function BookingForm() {
@@ -58,7 +53,6 @@ export default function BookingForm() {
 
 
   const form = useForm<FormType>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       "count_people": "",
       "arrival": "",
@@ -107,6 +101,7 @@ export default function BookingForm() {
   }
 
 
+
   return (
     <section id="mygroup" className="sm:py-16 py-8">
 
@@ -119,7 +114,7 @@ export default function BookingForm() {
           </div>
 
           <p className="lg:max-w-[320px]  text-sm 2xl:text-md">
-          {t("Biz har qanday guruh va oilalar uchun sayohatlar, transferlar va boshqa xizmatlarni tashkil qilamiz. Shuningdek, Dubayda VIP sayohatlarni tashkil qilish bo‘yicha ixtisoslashgan eksklyuziv kompaniyamiz. Maqsadimiz – hashamat, qulaylik va shaxsiy yondashuvni qadrlaydigan mijozlarimizga noyob va shaxsiylashtirilgan sayohat xizmatlarini taqdim etish. Har bir sayohatingizni unutilmas tajribaga aylantirishga intilamiz.")}
+            {t("Biz har qanday guruh va oilalar uchun sayohatlar, transferlar va boshqa xizmatlarni tashkil qilamiz. Shuningdek, Dubayda VIP sayohatlarni tashkil qilish bo‘yicha ixtisoslashgan eksklyuziv kompaniyamiz. Maqsadimiz – hashamat, qulaylik va shaxsiy yondashuvni qadrlaydigan mijozlarimizga noyob va shaxsiylashtirilgan sayohat xizmatlarini taqdim etish. Har bir sayohatingizni unutilmas tajribaga aylantirishga intilamiz.")}
           </p>
 
         </div>
@@ -159,7 +154,7 @@ export default function BookingForm() {
 
             <div>
               <Label className={`block text-sm mb-1 ${form.formState.errors.services ? "text-destructive" : ""}`} >
-               {t("Xizmatlar turi")} <span className="text-red-500">*</span>
+                {t("Xizmatlar turi")} <span className="text-red-500">*</span>
               </Label>
               <div className="w-full mt-1 flex flex-wrap gap-3">
                 {isSuccess && data?.map((item: { title: string, id: number }) => (
@@ -223,7 +218,7 @@ export default function BookingForm() {
                   methods={form}
                   name="phone"
                   className="mt-1 2xl:h-[50px] h-[40px]"
-                  required
+                  required={form.watch("email") ? false : true}
                 />
                 <FormInput
                   methods={form}
@@ -231,12 +226,21 @@ export default function BookingForm() {
                   className="mt-1 2xl:h-[50px] h-[40px] "
                   label={t("Email")}
                   placeholder={t("Email manzilingiz")}
-                  required
+                  required={form.watch("phone") ? false : true}
                 />
               </div>
             </div>
 
-            <Button className="w-full sm:mt-4 mt-3 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg 2xl:h-[50px] h-[40px]">
+            <Button
+              onClick={() => {
+                if (watchedServices.length === 0) {
+                  form.setError("services", {
+                    type: "manual",
+                    message: "Kamida bitta xizmat tanlanishi shart!",
+                  });
+                }
+              }}
+              className="w-full sm:mt-4 mt-3 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg 2xl:h-[50px] h-[40px]">
               {t("Buyurtmani yuborish")}
             </Button>
           </form>
