@@ -42,6 +42,29 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+
+  console.log(activeSection);
+
 
 
 
@@ -56,7 +79,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={`hover:text-[#FFD700] ${`/${link.href}` == router.asPath ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
+            <Link key={link.href} href={link.href} className={`hover:text-[#FFD700] ${`/${link.href}` == (`/#${activeSection}` || router.asPath) ? "text-[#FFD700]" : ""} font-medium text-sm sm:text-md 2xl:text-lg`}>
               {t(link.label)}
             </Link>
           ))}
@@ -80,7 +103,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
         <div className="lg:hidden transition-all duration-100  ">
           {navLinksMobile.map((link) => (
             <Link key={link.href} href={link.href}
-              className={`border-b ${`/${link.href}` == router.asPath ? "text-[#FFD700]" : ""}  w-full items-center justify-between flex py-3   hover:text-[#FFD700`}
+              className={`border-b ${`/${link.href}` == (`/#${activeSection}` || router.asPath) ? "text-[#FFD700]" : ""}  w-full items-center justify-between flex py-3   hover:text-[#FFD700`}
               onClick={() => setIsMenuOpen(false)}>
               <div className="flex items-center gap-2">
                 <span>{link.icon}</span>

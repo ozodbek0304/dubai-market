@@ -108,7 +108,7 @@ export default function BookingForm() {
 
 
   return (
-    <div id="mygroup" className="sm:py-16 py-8">
+    <section id="mygroup" className="sm:py-16 py-8">
 
       <div className='max-w-[1000px]  2xl:max-w-7xl mx-auto lg:gap-14 sm:gap-6 gap-3 sm:p-12 p-3 rounded-[32px] bg-[#F5F7FA] flex flex-col justify-between lg:flex-row'>
         {/* Left Column */}
@@ -241,7 +241,7 @@ export default function BookingForm() {
           </form>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

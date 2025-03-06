@@ -64,7 +64,7 @@ export default function ContactSection() {
 
   return (
     <>
-      <div id="contact" className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
+      <section id="contact" className="max-w-[1000px]  2xl:max-w-7xl mx-auto py-8 sm:py-16">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left Column */}
           <div className="bg-[#F5F7FA] rounded-3xl sm:p-8 p-3 shadow-sm">
@@ -179,7 +179,7 @@ export default function ContactSection() {
             </form>
           </div>
         </div>
-      </div >
+      </section>
 
 
     </>
