@@ -14,7 +14,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "../ui/error-message"
 import { Checkbox } from "../ui/checkbox"
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import { useTranslation } from "react-i18next"
 
 

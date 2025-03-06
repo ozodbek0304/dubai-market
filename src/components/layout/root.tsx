@@ -5,7 +5,7 @@ import type { Metadata } from "next"
 import Navbar from "../partials/navbar"
 import ContactSection from "../home/contact/contact"
 import Footer from "../partials/footer"
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "sonner"
 
 
 export const metadata: Metadata = {

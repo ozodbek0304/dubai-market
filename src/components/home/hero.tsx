@@ -8,11 +8,11 @@ import FormInput from "../form-custom/input"
 import FormTextarea from "../form-custom/textarea"
 import PhoneField from "../form-custom/phone-field"
 import { usePost } from "@/services/https"
-import toast from 'react-hot-toast';
 import { useTranslation } from "react-i18next"
 import { ServerErrorResponse } from "./bron-form"
 import Image from "next/image"
 import Head from "next/head"
+import { toast } from "sonner"
 
 
 interface FormType {

@@ -9,7 +9,7 @@ import FormInput from "@/components/form-custom/input"
 import PhoneField from "@/components/form-custom/phone-field"
 import FormTextarea from "@/components/form-custom/textarea"
 import { usePost } from "@/services/https"
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import { useTranslation } from "react-i18next"
 import { ServerErrorResponse } from "../bron-form"
 
