@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { useGet } from '@/services/https'
+import CardSkeleton from '../skeletion/card-skeletion'
 
 
 export type UserData = {
@@ -20,7 +21,7 @@ function TravelerPages() {
     const { t, i18n } = useTranslation();
     const { push } = useRouter();
     const [hoveredId, setHoveredId] = useState<number>(0);
-    const { data: dataTour, isSuccess, refetch } = useGet("tour-example");
+    const { data: dataTour, isSuccess, refetch, isLoading } = useGet("tour-example");
 
     useEffect(() => {
         refetch();
@@ -54,6 +55,18 @@ function TravelerPages() {
                         </CardContent>
                     </Card>
                 ))
+                }
+
+                {
+                    isLoading && (
+                        Array(4).fill(0).map((_, index) => (
+                            <div key={index} className={(index === 0 || index === 3) ? "lg:col-span-2 col-span-1 row-span-1" : "col-span-1 row-span-1"}
+                            >
+
+                                <CardSkeleton />
+                            </div>
+                        ))
+                    )
                 }
             </div>
 

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next"
 import { useEffect, useState } from "react"
 import { useGet } from "@/services/https"
 import { UserData } from "../home/traveler"
+import CardSkeleton from "../skeletion/card-skeletion"
 
 
 
@@ -14,7 +15,7 @@ export default function TravelsPages() {
     const { push } = useRouter();
     const { t, i18n } = useTranslation();
     const [hoveredId, setHoveredId] = useState<number>(0);
-    const { data: dataTour, isSuccess, refetch } = useGet("tour-example");
+    const { data: dataTour, isSuccess, refetch, isLoading } = useGet("tour-example");
 
 
     useEffect(() => {
@@ -58,6 +59,15 @@ export default function TravelsPages() {
                     </Card>
                 ))
                 }
+
+                {
+                    isLoading && (
+                        Array(6).fill(0).map((_, index) => (
+                            <CardSkeleton key={index} />
+                        ))
+                    )
+                }
+
             </div>
         </div>
     )
