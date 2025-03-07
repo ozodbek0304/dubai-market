@@ -53,7 +53,7 @@ export default function TravelsPages() {
                         }}
                     >
                         <CardContent className="p-4 flex flex-col h-full justify-end">
-                            <h3 className="text-xl text-white font-bold mb-2">{t(item.title)}</h3>
+                            <h1 className="text-xl text-white font-bold mb-2">{t(item.title)}</h1>
                             <p className="text-white text-md">{t(item.location)}</p>
                         </CardContent>
                     </Card>

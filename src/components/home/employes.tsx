@@ -85,7 +85,7 @@ export default function TestimonialSlider() {
                                     <AvatarFallback>JW</AvatarFallback>
                                 </Avatar>
                                 <div>
-                                    <h3 className="font-medium">{testimonial.name}</h3>
+                                    <h1 className="font-medium">{testimonial.name}</h1>
                                     <p className="text-sm text-gray-500">{testimonial.country}</p>
                                 </div>
                             </div>

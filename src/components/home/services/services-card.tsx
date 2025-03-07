@@ -24,7 +24,7 @@ export default function ServiceCard({ icon, title, description, commonServices }
         <div className='w-16 h-16 mb-6'>
           <Image priority width={200} height={200} src={icon} alt={t(title)} />
         </div>
-        <h3 className="text-lg 2xl:text-xl font-bold mb-3">{t(title)}</h3>
+        <h1 className="text-lg 2xl:text-xl font-bold mb-3">{t(title)}</h1>
         <p className="text-gray-600 text-sm">{t(description)}</p>
       </CardContent>
       <CardFooter>

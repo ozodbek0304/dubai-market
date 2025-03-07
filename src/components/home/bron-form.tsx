@@ -209,7 +209,7 @@ export default function BookingForm() {
             />
 
             <div className="pt-4">
-              <h3 className="text-lg font-semibold mb-4">{t("Aloqa ma'lumotlari")}</h3>
+              <h1 className="text-lg font-semibold mb-4">{t("Aloqa ma'lumotlari")}</h1>
               <div className="space-y-4">
                 <FormInput
                   methods={form}
