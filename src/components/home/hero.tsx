@@ -23,7 +23,7 @@ interface FormType {
 }
 
 export default function Hero() {
-  const { mutate } = usePost();
+  const { mutate, isPending} = usePost();
   const { t } = useTranslation();
 
   const form = useForm<FormType>({
@@ -138,7 +138,7 @@ export default function Hero() {
                   </div>
 
                   <div className=" w-full flex justify-end ">
-                    <Button type="submit" className="bg-yellow-400 cursor-pointer sm:w-[220px] w-full   hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
+                    <Button loading={isPending} type="submit" className="bg-yellow-400 cursor-pointer sm:w-[220px] w-full   hover:bg-yellow-500 h-[40px] 2xl:h-[59px] 2xl:rounded-[16px] xl:px-8 xl:text-md text-black font-medium">
                       {t("Xabar Yuborish")}
                     </Button>
 

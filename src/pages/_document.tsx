@@ -35,7 +35,6 @@ export default function Document() {
           content="Dubayga qulay va arzon sayohat qiling. Eng yaxshi turpaketlar siz uchun!"
         />
         <meta name="twitter:image" content="/logo.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>

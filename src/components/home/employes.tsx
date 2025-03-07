@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useTranslation } from "react-i18next"
 import { useGet } from "@/services/https"
 import { useEffect } from "react"
+import CardSkeleton from "../skeletion/card-skeletion"
 
 type UserData = {
     id: number;
@@ -25,7 +26,8 @@ type UserData = {
 export default function TestimonialSlider() {
     const { t, i18n } = useTranslation();
 
-    const { data, isSuccess, refetch } = useGet("comments");
+    const { data, isSuccess, refetch, isLoading } = useGet("comments");
+
 
     const settings = {
         dots: false,
@@ -61,22 +63,24 @@ export default function TestimonialSlider() {
         ],
     }
 
-
     useEffect(() => {
         refetch();
     }, [i18n.language, refetch]);
+
+
+
 
     return (
         <section id="reviews" className="w-full overflow-hidden py-12">
 
             <h1 className="sm:mb-12 mb-6 font-bold 2xl:text-[48px] lg:text-[36px] text-[24px] max-w-[1000px]  2xl:max-w-7xl mx-auto sm:text-start text-center">{t("Biz haqimizda mijozlar nima deyishadi?")}</h1>
             <Slider {...settings} className="testimonial-slider -mx-2">
-                {isSuccess && data?.map((testimonial:UserData) => (
+                {isSuccess && data?.map((testimonial: UserData) => (
                     <div key={testimonial.id} className="px-2">
                         <div className="bg-white rounded-lg border p-4 h-full">
                             {/* Author Info */}
                             <div className="flex items-center gap-3 mb-4">
-                                <Avatar className="h-12 w-12">
+                                <Avatar className="h-12 w-12 object-contain">
                                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                                     <AvatarFallback>JW</AvatarFallback>
                                 </Avatar>
@@ -92,7 +96,7 @@ export default function TestimonialSlider() {
                             {/* Thumbnails */}
                             <div className="flex gap-2 overflow-x-scroll w-full">
                                 {testimonial.images.map((image, index) => (
-                                    <div key={index} className="relative min-w-16 h-16 rounded-md overflow-hidden">
+                                    <div key={index} className="relative min-w-12 h-12 rounded-md overflow-hidden">
                                         <Image priority
                                             src={image.image || "/placeholder.svg"}
                                             alt={`Thumbnail ${index + 1}`}
@@ -105,6 +109,16 @@ export default function TestimonialSlider() {
                         </div>
                     </div>
                 ))}
+
+                {
+                    isLoading && (
+                        Array(4).fill(0).map((_, index) => (
+                            <CardSkeleton key={index} />
+                        ))
+                    )
+                }
+
+
             </Slider>
         </section>
     )

@@ -22,7 +22,7 @@ type FormType = {
 }
 
 export default function ContactSection() {
-  const { mutate } = usePost();
+  const { mutate, isPending } = usePost();
   const { t } = useTranslation();
 
   const form = useForm<FormType>({
@@ -168,13 +168,16 @@ export default function ContactSection() {
                 required
 
               />
-              <Button
+             <div className="w-full flex justify-end sm:justify-start">
+             <Button
+              loading={isPending}
                 type="submit"
                 className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium 
                 cursor-pointer 2xl:py-6 py-4 px-8 rounded-lg"
               >
                 {t("Xabar yuborish")}
               </Button>
+             </div>
 
             </form>
           </div>

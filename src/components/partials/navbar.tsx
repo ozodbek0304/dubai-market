@@ -67,7 +67,6 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
 
 
 
-
   return (
     <nav className={cn("fixed w-full z-50 transition-all lg:px-0 px-6 duration-300", (isScrolled || navbarTheme || isMenuOpen) ? "bg-white text-slate-800 shadow-md" : "text-white")}>
       <div className={`2xl:max-w-7xl max-w-[1000px] mx-auto  flex justify-between ${(isScrolled || navbarTheme || isMenuOpen) ? "items-center   border-b lg:border-none " : "items-end "} h-20`}>
@@ -91,7 +90,6 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
             <LanguageComponents theme={(isScrolled || navbarTheme || isMenuOpen)} />
           </div>
         </div>
-
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden">

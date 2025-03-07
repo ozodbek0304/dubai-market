@@ -49,7 +49,7 @@ export interface ServerErrorResponse {
 
 export default function BookingForm() {
   const { data, isSuccess, refetch } = useGet("services");
-  const { mutate } = usePost();
+  const { mutate,isPending } = usePost();
   const { t, i18n } = useTranslation();
 
 
@@ -237,6 +237,7 @@ export default function BookingForm() {
             </div>
 
             <Button
+            loading={isPending}
               onClick={() => {
                 if (watchedServices.length === 0) {
                   form.setError("services", {
