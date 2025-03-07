@@ -38,7 +38,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
     ...calendarProps
 }: IProps<IForm> & CalendarProps) {
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const {
         field,
         fieldState: { error },
@@ -48,7 +48,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label || placeholder}${t("ni tanlang")}`,
+                message: `${label || placeholder}${i18n.language === "uz" ? "" : " "}${t("ni tanlang")}`,
             },
         },
     })
@@ -80,7 +80,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
                                 new Date(
                                     field.value?.toString()?.replace("/", "-"),
                                 )
-                            :   new Date()
+                                : new Date()
                         }
                         style={{
                             pointerEvents:

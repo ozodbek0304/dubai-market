@@ -30,12 +30,12 @@ export default function FormTextarea<IForm extends FieldValues>({
         formState: { errors },
     } = methods
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label || props.placeholder}${t("ni kiriting")}`,
+            message: `${label || props.placeholder}${i18n.language === "uz" ? "" : " "}${t("ni kiriting")}`,
         },
     })
 

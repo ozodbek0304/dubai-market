@@ -20,7 +20,7 @@ export default function FormInput<IForm extends FieldValues>({
     methods,
     name,
     label,
-    type="text",
+    type = "text",
     wrapperClassName,
     hideError = false,
     required = false,
@@ -30,12 +30,12 @@ export default function FormInput<IForm extends FieldValues>({
         register,
         formState: { errors },
     } = methods
-     const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label || props.placeholder}${t("ni kiriting")}`,
+            message: `${label || props.placeholder}${i18n.language === "uz" ? "" : " "}${t("ni kiriting")}`,
         },
     })
 

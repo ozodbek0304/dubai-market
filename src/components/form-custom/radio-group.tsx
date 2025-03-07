@@ -41,7 +41,7 @@ export default function FormRadioGroup<IForm extends FieldValues>({
     returnValue = "id",
 }: IProps<IForm>) {
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const {
         field,
@@ -52,7 +52,7 @@ export default function FormRadioGroup<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label}${t("ni tanlang")}`,
+                message: `${label}${i18n.language === "uz" ? "" : " "}${t("ni tanlang")}`,
             },
         },
     })

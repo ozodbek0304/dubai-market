@@ -23,7 +23,7 @@ export default function FormMonthPicker<IForm extends FieldValues>({
     wrapperClassName,
 }: IProps<IForm>) {
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const {
         field,
@@ -34,7 +34,7 @@ export default function FormMonthPicker<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label}${t("ni tanlang")}`,
+                message: `${label}${i18n.language === "uz" ? "" : " "}${t("ni tanlang")}`,
             },
         },
     })
