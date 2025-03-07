@@ -18,7 +18,7 @@ export default function Footer() {
 
           <div className="sm:flex flex-col col-span-2 hidden 2x:gap-9 gap-5">
             <div>
-              <h4 className="text-[#5D5D5F] mb-2">{t("Telefon")}</h4>
+              <h1 className="text-[#5D5D5F] mb-2">{t("Telefon")}</h1>
               <div className="flex flex-col gap-2">
                 <a href="tel:+971581694135" className="text-[#020105] hover:text-yellow-500">
                   UAE <br />
@@ -32,12 +32,12 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-[#5D5D5F] mb-2">{t("Manzil")}</h4>
-              <a target="_blank" href="https://maps.app.goo.gl/tSpST7dYCv745WuE7?g_st=com.google.maps.preview.copy" className="text-[#020105] hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
+              <h1 className="text-[#5D5D5F] mb-2">{t("Manzil")}</h1>
+              <a target="_blank" href="https://maps.app.goo.gl/U76foumqKFceoqHw8" className="text-[#020105] hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
             </div>
 
             <div>
-              <h4 className="text-[#5D5D5F] mb-2">{t("Elektron pochta")}</h4>
+              <h1 className="text-[#5D5D5F] mb-2">{t("Elektron pochta")}</h1>
               <a href="mailto:operations@magical-desert.com" className="text-[#020105] hover:text-yellow-500">operations@magical-desert.com</a>
 
             </div>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col sm:py-0 py-6 items-center sm:items-start gap-2">
-            <h3 className="font-medium text-[#020105] mb-2">{t("Ijtimoiy tarmoqlar")}</h3>
+            <h1 className="font-medium text-[#020105] mb-2">{t("Ijtimoiy tarmoqlar")}</h1>
             <div className="flex gap-6">
               <a className="w-8 h-8" href="https://www.instagram.com/md_tours.ae?igsh=MjRuamhzdmY5NGZn&utm_source=qr" target="_blank">
                 <Image priority src="/icons/instagram.png" alt="instagram" width={100} height={100} />
@@ -102,7 +102,7 @@ export default function Footer() {
         </div>
 
         <div className="w-full hidden  sm:flex items-center mt-7 justify-between">
-          <p className="text-[#9A999B]">{t("© 2025 M Tours. Barcha huquqlar himoyalangan.")}</p>
+          <p className="text-[#333333]">{t("© 2025 M Tours. Barcha huquqlar himoyalangan.")}</p>
           <p className="text-[#020105]">{t("Barcha huquqlar himoyalangan")}</p>
         </div>
 

@@ -23,7 +23,7 @@ interface FormType {
 }
 
 export default function Hero() {
-  const { mutate, isPending} = usePost();
+  const { mutate, isPending } = usePost();
   const { t } = useTranslation();
 
   const form = useForm<FormType>({
@@ -78,8 +78,8 @@ export default function Hero() {
         {/* Content */}
         <div className="relative  z-10 h-full flex flex-col justify-center items-center 2xl:max-w-7xl max-w-[1000px]  mx-auto pt-24">
           <div className="text-center text-white mb-8">
-            <div className="mb-6">
-              <Image priority height={90} width={340} src="/logo.png" alt="MD Tours" className="h-16 mx-auto" />
+            <div className="mb-8">
+              <Image priority height={64} width={340} src="/logo.png" alt="MD Tours" className=" mx-auto" />
             </div>
             <h1 className="text-2xl md:text-3xl lg:text-5xl font-black  mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
             <p className="text-sm md:text-xl ">
@@ -116,7 +116,8 @@ export default function Hero() {
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <PhoneField
-                        label=""
+                        label="phone"
+                        labelClass={"hidden"}
                         methods={form}
                         name="phone"
                         className=" 2xl:h-[59px] !bg-transparent  h-[40px]"

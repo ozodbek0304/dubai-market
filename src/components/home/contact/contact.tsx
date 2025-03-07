@@ -113,7 +113,7 @@ export default function ContactSection() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <a target="_blank" href="https://maps.app.goo.gl/tSpST7dYCv745WuE7?g_st=com.google.maps.preview.copy" className="text-gray-600 hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
+                <a target="_blank" href="https://maps.app.goo.gl/U76foumqKFceoqHw8" className="text-gray-600 hover:text-yellow-500">{t("Dubai, United Arab Emirates")}</a>
               </div>
             </div>
 

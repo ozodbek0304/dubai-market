@@ -9,9 +9,9 @@ import CardSkeleton from '../skeletion/card-skeletion'
 
 
 export type UserData = {
-    id: number;
+    slug: string;
     title: string;
-    description: string;
+    location: string;
     poster: string;
 }
 
@@ -20,7 +20,7 @@ export type UserData = {
 function TravelerPages() {
     const { t, i18n } = useTranslation();
     const { push } = useRouter();
-    const [hoveredId, setHoveredId] = useState<number>(0);
+    const [hoveredId, setHoveredId] = useState<string>('');
     const { data: dataTour, isSuccess, refetch, isLoading } = useGet("tour-example");
 
     useEffect(() => {
@@ -36,22 +36,22 @@ function TravelerPages() {
             <div className='w-full grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
                 {isSuccess && dataTour?.slice(0, 4)?.map((item: UserData, index: number) => (
                     <Card
-                        onClick={() => push("/travel/1")}
-                        onMouseEnter={() => setHoveredId(item.id)}
-                        onMouseLeave={() => setHoveredId(0)}
+                        onClick={() => push(`/travel/${item.slug}`)}
+                        onMouseEnter={() => setHoveredId(item.slug)}
+                        onMouseLeave={() => setHoveredId('')}
 
                         key={index} className={cn("h-[332px] cursor-pointer p-0 bg-no-repeat bg-cover  shadow-[3px 19px 72.5px 0px #0000000F] border-none",
                             (index === 0 || index === 3) ? "lg:col-span-2 col-span-1 row-span-1" : "col-span-1 row-span-1"
 
                         )}
                         style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, ${item.id === hoveredId ? "0.1" : "0.3"}), rgba(0, 0, 0, ${item.id === hoveredId ? "0.1" : "0.3"})), url(${item.poster})`,
+                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, ${item.slug === hoveredId ? "0.1" : "0.3"}), rgba(0, 0, 0, ${item.slug === hoveredId ? "0.1" : "0.3"})), url(${item.poster})`,
                             backgroundPosition: "center"
                         }}
                     >
                         <CardContent className="p-4 flex flex-col h-full justify-end">
-                            <h3 className="text-xl text-white font-bold mb-2">{t(item.title)}</h3>
-                            <p className="text-white text-md">{t(item.description)}</p>
+                            <h1 className="text-xl text-white font-bold mb-2">{t(item.title)}</h1>
+                            <p className="text-white text-md">{t(item.location)}</p>
                         </CardContent>
                     </Card>
                 ))

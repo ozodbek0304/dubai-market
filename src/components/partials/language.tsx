@@ -17,12 +17,15 @@ function LanguageComponents({ theme }: { theme: boolean }) {
     i18n.changeLanguage(lang);
   };
 
-
-
   return (
     <Select defaultValue={i18n.language} onValueChange={changeLanguage}>
-      <SelectTrigger className={`shadow-none sm:border-none font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}>
-        <SelectValue placeholder="Tilni tanlang" />
+      <SelectTrigger
+        className={`shadow-none sm:border-none font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}
+        aria-label="Tilni tanlang"
+      >
+        <SelectValue>
+          {i18n.language === "uz" ? "O'zbek" : i18n.language === "en" ? "English" : "Русский"}
+        </SelectValue>
         <ChevronDown className={`w-5 h-5 ${theme ? "text-slate-800" : "text-white"}`} />
       </SelectTrigger>
 

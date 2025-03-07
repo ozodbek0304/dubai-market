@@ -23,6 +23,7 @@ interface IProps<IForm extends FieldValues> {
     required?: boolean
     wrapperClassName?: string
     hideError?: boolean
+    labelClass?: string
 }
 
 
@@ -34,6 +35,7 @@ export default function PhoneField<IForm extends FieldValues>({
     label = "Telefon raqam",
     required = false,
     wrapperClassName,
+    labelClass = "",
     className,
     inputClassName,
     countrySelectorStyleProps,
@@ -97,7 +99,7 @@ export default function PhoneField<IForm extends FieldValues>({
             {label && (
                 <Label
                     htmlFor={name}
-                    className={cn(!!error && "text-destructive")}
+                    className={cn(labelClass, !!error && "text-destructive")}
                     required={required}
                 >
                     {t(label)}
