@@ -14,6 +14,7 @@ interface IProps<IForm extends FieldValues> {
     wrapperClassName?: ClassNameValue
     hideError?: boolean
     required?: boolean
+    message?: string
 }
 
 export default function FormInput<IForm extends FieldValues>({
@@ -24,6 +25,7 @@ export default function FormInput<IForm extends FieldValues>({
     wrapperClassName,
     hideError = false,
     required = false,
+    message = "",
     ...props
 }: IProps<IForm> & InputProps) {
     const {
@@ -35,7 +37,7 @@ export default function FormInput<IForm extends FieldValues>({
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label || props.placeholder}${i18n.language === "uz" ? "" : " "}${t("ni kiriting")}`,
+            message: message,
         },
     })
 

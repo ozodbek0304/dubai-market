@@ -142,6 +142,7 @@ export default function ContactSection() {
                 className="mt-1 2xl:h-[50px] h-[40px]"
                 label={t("Ism")}
                 placeholder={t("Ismingiz")}
+                message={t("Ismingizni kiriting")}
                 required
               />
               <PhoneField
@@ -156,6 +157,7 @@ export default function ContactSection() {
                 className="mt-1 2xl:h-[50px] h-[40px] "
                 label={t("Email")}
                 placeholder={t("Email manzilingiz")}
+                message={t("Ismingizni kiriting")}
                 required={form.watch("phone") ? false : true}
               />
               <FormTextarea
@@ -165,6 +167,7 @@ export default function ContactSection() {
                 wrapperClassName={"h-[120px] "}
                 className="h-full mt-1 bg-white"
                 placeholder={t("Sizning xabaringiz")}
+                message={t("Xabaringizni kiriting")}
                 required
 
               />

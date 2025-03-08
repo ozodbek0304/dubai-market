@@ -23,6 +23,7 @@ interface IProps<IForm extends FieldValues> {
     format?: string
     placeholder?: string
     required?: boolean
+    message?:string
 }
 
 export default function FormDatePicker<IForm extends FieldValues>({
@@ -35,6 +36,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
     placeholder,
     required = false,
     wrapperClassName,
+    message = "",
     ...calendarProps
 }: IProps<IForm> & CalendarProps) {
 
@@ -48,7 +50,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
         rules: {
             required: {
                 value: required,
-                message: `${label || placeholder}${i18n.language === "uz" ? "" : " "}${t("ni tanlang")}`,
+                message: message,
             },
         },
     })

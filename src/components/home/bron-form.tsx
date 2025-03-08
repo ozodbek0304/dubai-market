@@ -49,7 +49,7 @@ export interface ServerErrorResponse {
 
 export default function BookingForm() {
   const { data, isSuccess, refetch } = useGet("services");
-  const { mutate,isPending } = usePost();
+  const { mutate, isPending } = usePost();
   const { t, i18n } = useTranslation();
 
 
@@ -107,6 +107,7 @@ export default function BookingForm() {
 
 
 
+
   return (
     <section id="mygroup" className="sm:py-16 py-8">
 
@@ -136,6 +137,7 @@ export default function BookingForm() {
               className="mt-1 2xl:h-[50px] h-[40px]"
               label={t("Ishtirokchilar sonini tanlang")}
               placeholder={t("Ishtirokchilar sonini tanlang")}
+              message={t("Ishtirokchilar sonini kiriting")}
               required
             />
 
@@ -144,11 +146,13 @@ export default function BookingForm() {
                 methods={form}
                 name="arrival"
                 label={t("Kelish va ketish sanasi")}
+                message={t("Kelish sanasini kiriting")}
                 placeholder={t("Kelish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
               />
               <FormDatePicker
+              message={t("Ketish sanasini kiriting")}
                 methods={form}
                 name="departure"
                 placeholder={t("Ketish sanasi")}
@@ -205,7 +209,7 @@ export default function BookingForm() {
               wrapperClassName={"h-[120px]"}
               className="h-full mt-1"
               required
-
+              message={t("Qo'shimcha talablarni kiriting")}
             />
 
             <div className="pt-4">
@@ -217,6 +221,7 @@ export default function BookingForm() {
                   className="mt-1 2xl:h-[50px] h-[40px]"
                   label={t("Ism")}
                   placeholder={t("Ismingiz")}
+                  message={t("Ismingizni kiriting")}
                   required
                 />
                 <PhoneField
@@ -232,12 +237,14 @@ export default function BookingForm() {
                   label={t("Email")}
                   placeholder={t("Email manzilingiz")}
                   required={form.watch("phone") ? false : true}
+                   message={t("Ismingizni kiriting")}
                 />
               </div>
             </div>
 
             <Button
-            loading={isPending}
+              loading={isPending}
+              type="submit"
               onClick={() => {
                 if (watchedServices.length === 0) {
                   form.setError("services", {

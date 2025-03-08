@@ -14,6 +14,7 @@ interface IProps<IForm extends FieldValues> {
     wrapperClassName?: ClassNameValue
     hideError?: boolean
     required?: boolean
+    message?:string
 }
 
 export default function FormTextarea<IForm extends FieldValues>({
@@ -23,6 +24,7 @@ export default function FormTextarea<IForm extends FieldValues>({
     wrapperClassName,
     hideError = false,
     required = false,
+    message="",
     ...props
 }: IProps<IForm> & React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
     const {
@@ -35,7 +37,7 @@ export default function FormTextarea<IForm extends FieldValues>({
     const reg = register(name, {
         required: {
             value: required,
-            message: `${label || props.placeholder}${i18n.language === "uz" ? "" : " "}${t("ni kiriting")}`,
+            message: message,
         },
     })
 

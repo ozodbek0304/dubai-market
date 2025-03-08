@@ -104,11 +104,13 @@ export default function Hero() {
                         type="text"
                         name="name"
                         required
+                        message={t("Ismingizni kiriting")}
                         placeholder={t("Ismingiz")}
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
                       <FormInput
                         methods={form}
+                        message={t("Emailingizni kiriting")}
                         type="email"
                         required={form.watch("phone") ? false : true}
                         name="email"
@@ -134,6 +136,7 @@ export default function Hero() {
                       placeholder={t("Xabar")}
                       className="bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       rows={3}
+                      message={t("Xabaringizni kiriting")}
                       required
                     />
                   </div>
