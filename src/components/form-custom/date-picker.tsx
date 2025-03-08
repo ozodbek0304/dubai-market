@@ -11,7 +11,6 @@ import { CalendarProps } from "../ui/calendar"
 import { DatePicker } from "../ui/date-picker"
 import ErrorMessage from "../ui/error-message"
 import { Label } from "../ui/label"
-import { useTranslation } from "react-i18next"
 
 interface IProps<IForm extends FieldValues> {
     methods: UseFormReturn<IForm>
@@ -23,7 +22,7 @@ interface IProps<IForm extends FieldValues> {
     format?: string
     placeholder?: string
     required?: boolean
-    message?:string
+    message?: string
 }
 
 export default function FormDatePicker<IForm extends FieldValues>({
@@ -40,7 +39,6 @@ export default function FormDatePicker<IForm extends FieldValues>({
     ...calendarProps
 }: IProps<IForm> & CalendarProps) {
 
-    const { t, i18n } = useTranslation();
     const {
         field,
         fieldState: { error },
@@ -75,6 +73,7 @@ export default function FormDatePicker<IForm extends FieldValues>({
                         format={format}
                         placeholder={placeholder || label}
                         disabled={field.disabled || disabled}
+                        
                         fullWidth
                         {...calendarProps}
                         defaultMonth={

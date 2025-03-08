@@ -5,7 +5,6 @@ import { ClassNameValue } from "tailwind-merge"
 import { Label } from "../ui/label"
 import ErrorMessage from "../ui/error-message"
 import { Textarea } from "../ui/textarea"
-import { useTranslation } from "react-i18next"
 
 interface IProps<IForm extends FieldValues> {
     methods: UseFormReturn<IForm>
@@ -32,7 +31,6 @@ export default function FormTextarea<IForm extends FieldValues>({
         formState: { errors },
     } = methods
 
-    const { t, i18n } = useTranslation();
 
     const reg = register(name, {
         required: {
@@ -43,8 +41,9 @@ export default function FormTextarea<IForm extends FieldValues>({
 
     useEffect(() => {
         register(name)
-    }, [name, register])
+    }, [name, register]);
 
+  
     return (
         <fieldset
             className={cn("flex flex-col gap-1 w-full", wrapperClassName)}

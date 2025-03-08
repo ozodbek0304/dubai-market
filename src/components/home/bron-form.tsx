@@ -22,9 +22,11 @@ function formatDate(dateStr: string) {
 
   const date = new Date(year, month - 1, day, 0, 0, 0);
 
-  const formattedDate = date.toISOString().split(".")[0];
+  const formattedDate = date.toISOString()?.split(".")[0];
   return formattedDate;
 }
+
+
 
 
 
@@ -107,7 +109,6 @@ export default function BookingForm() {
 
 
 
-
   return (
     <section id="mygroup" className="sm:py-16 py-8">
 
@@ -150,14 +151,17 @@ export default function BookingForm() {
                 placeholder={t("Kelish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
+                fromDate={new Date()}
+
               />
               <FormDatePicker
-              message={t("Ketish sanasini kiriting")}
+                message={t("Ketish sanasini kiriting")}
                 methods={form}
                 name="departure"
                 placeholder={t("Ketish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
+                fromDate={form.watch("arrival") ? new Date(formatDate(form.watch("arrival"))) : new Date()}
               />
             </div>
 
@@ -236,7 +240,7 @@ export default function BookingForm() {
                   label={t("Email")}
                   placeholder={t("Email manzilingiz")}
                   required={form.watch("phone") ? false : true}
-                   message={t("Ismingizni kiriting")}
+                  message={t("Ismingizni kiriting")}
                 />
               </div>
             </div>
