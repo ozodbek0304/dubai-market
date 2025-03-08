@@ -82,6 +82,7 @@ export default function BookingForm() {
       ...values,
       arrival: formatDate(values.arrival),
       departure: formatDate(values.departure),
+      ...(values.services?.length > 0 && { services: values.services }),
     })
 
     mutate("tourbook", formattedData, {
