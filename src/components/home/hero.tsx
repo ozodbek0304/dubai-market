@@ -85,7 +85,7 @@ export default function Hero() {
             </div>
             <h1 className="text-2xl md:text-3xl lg:text-5xl font-black  mb-4">{t("DUBAYDAGI SHAXSIY VIP XIZMATLAR")}</h1>
             <p className="text-sm md:text-xl ">
-              &ldquo;&ldquo;{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}&rdquo;
+              &ldquo;{t("Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz")}&rdquo;
             </p>
           </div>
 
