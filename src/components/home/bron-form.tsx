@@ -26,6 +26,11 @@ function formatDate(dateStr: string) {
   return formattedDate;
 }
 
+function parseDateDMY(dateString:string) {
+  const [day, month, year] = dateString.split("/").map(Number);
+  return new Date(year, month - 1, day); 
+}
+
 
 
 
@@ -161,7 +166,7 @@ export default function BookingForm() {
                 placeholder={t("Ketish sanasi")}
                 className="2xl:h-[50px] h-[40px] mt-1 cursor-pointer"
                 required
-                fromDate={form.watch("arrival") ? new Date(formatDate(form.watch("arrival"))) : new Date()}
+                fromDate={form.watch("arrival") ? new Date(parseDateDMY(form.watch("arrival"))) : new Date()}
               />
             </div>
 
