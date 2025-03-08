@@ -204,7 +204,7 @@ export default function BookingForm() {
 
               {form.formState.errors.services && (
                 <ErrorMessage className="mt-2">
-                  {form.formState.errors.services.message?.toString()}
+                  {(form.formState.errors.services.message?.toString())}
                 </ErrorMessage>
               )}
             </div>
