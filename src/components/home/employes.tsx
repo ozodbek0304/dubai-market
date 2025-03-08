@@ -95,7 +95,7 @@ export default function TestimonialSlider() {
                             <p className="text-gray-600 mb-4 line-clamp-3">{testimonial.description}</p>
 
                             {/* Thumbnails */}
-                            <div className="flex gap-2 overflow-x-scroll w-full">
+                            <div className="flex gap-2 overflow-x-scroll custom-scrollbar w-full">
                                 {testimonial.images.map((image, index) => (
                                     <div key={index} className="relative min-w-12 h-12 rounded-md overflow-hidden">
                                         <Image priority

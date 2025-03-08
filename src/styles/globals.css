@@ -190,6 +190,12 @@
   }
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  scrollbar-width: none;
+}
 
 
 
