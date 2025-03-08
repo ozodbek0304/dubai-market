@@ -6,8 +6,9 @@ export default function Document() {
       <Head>
 
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQSHC6M39G"></script>
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-FQSHC6M39G" defer></script>
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
