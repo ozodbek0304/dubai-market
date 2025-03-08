@@ -44,7 +44,7 @@ type FormType = {
   name: string;
   email: string;
   phone: string;
-  services: number[];
+  services?: number[];
 }
 
 export interface ServerErrorResponse {
@@ -73,7 +73,7 @@ export default function BookingForm() {
     }
   })
 
-  const watchedServices = form.watch('services')
+  const watchedServices = form.watch('services') || []
 
 
   const handleSubmit = (values: FormType) => {
@@ -82,8 +82,12 @@ export default function BookingForm() {
       ...values,
       arrival: formatDate(values.arrival),
       departure: formatDate(values.departure),
-      ...(values.services?.length > 0 && { services: values.services }),
     })
+
+    if (!values.services || values.services.length === 0) {
+      delete formattedData.services;
+    }
+   
 
     mutate("tourbook", formattedData, {
       onSuccess: () => {
