@@ -10,12 +10,12 @@ const data = [
   },
   {
     id: 2,
-    title: "100+ VIP mijozlar",
+    title: "500+ oila va individual mijozlar",
     icon: "/icons/operation.png",
   },
   {
     id: 3,
-    title: "4+ yillik tajriba",
+    title: "6+ yillik tajriba",
     icon: "/icons/star.png",
   }
 ]
