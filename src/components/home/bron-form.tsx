@@ -208,7 +208,6 @@ export default function BookingForm() {
               rows={8}
               wrapperClassName={"h-[120px]"}
               className="h-full mt-1"
-              required
               message={t("Qo'shimcha talablarni kiriting")}
             />
 

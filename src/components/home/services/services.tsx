@@ -18,13 +18,13 @@ export const services = [
   },
   {
     icon: "/icons/car.png",
-    title: "Transfer Xizmatlari ",
+    title: "Transfer Xizmatlari",
     description: "Aeroportdan va shahar ichida VIP hamda guruh mijozlar uchun qulay transfer xizmatlari.",
     link: "/services/transport",
     commonServices: [
       "Aeroport, Mehmonxona va Shahar Atrofida",
       "Maxsus VIP Transferlar va Yoqimli Sayohatlar",
-      "Guruh va Jamoaviy Transfer Xizmatlari "
+      "Guruh va Jamoaviy Transfer Xizmatlari"
     ]
   },
   {

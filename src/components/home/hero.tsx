@@ -108,15 +108,6 @@ export default function Hero() {
                         placeholder={t("Ismingiz")}
                         className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
                       />
-                      <FormInput
-                        methods={form}
-                        message={t("Emailingizni kiriting")}
-                        type="email"
-                        required={form.watch("phone") ? false : true}
-                        name="email"
-                        placeholder={t("Email")}
-                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
-                      />
                       <PhoneField
                         label="phone"
                         labelClass={"hidden"}
@@ -129,6 +120,16 @@ export default function Hero() {
                           buttonClassName: "!h-full !px-3  !rounded-l-md !bg-transparent !border-[#FFFFFF33]"
                         }}
                       />
+                      <FormInput
+                        methods={form}
+                        message={t("Emailingizni kiriting")}
+                        type="email"
+                        required={form.watch("phone") ? false : true}
+                        name="email"
+                        placeholder={t("Email")}
+                        className=" bg-transparent border-[#FFFFFF33] text-white placeholder:text-white h-[40px] 2xl:h-[59px]"
+                      />
+
                     </div>
                     <FormTextarea
                       methods={form}

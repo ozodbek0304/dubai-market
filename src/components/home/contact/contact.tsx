@@ -153,12 +153,13 @@ export default function ContactSection() {
               />
               <FormInput
                 methods={form}
+                type="email"
                 name="email"
                 className="mt-1 2xl:h-[50px] h-[40px] "
                 label={t("Email")}
                 placeholder={t("Email manzilingiz")}
-                message={t("Ismingizni kiriting")}
                 required={form.watch("phone") ? false : true}
+                message={t("Ismingizni kiriting")}
               />
               <FormTextarea
                 methods={form}
@@ -171,16 +172,16 @@ export default function ContactSection() {
                 required
 
               />
-             <div className="w-full flex justify-end sm:justify-start">
-             <Button
-              loading={isPending}
-                type="submit"
-                className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium 
+              <div className="w-full flex justify-end sm:justify-start">
+                <Button
+                  loading={isPending}
+                  type="submit"
+                  className=" bg-yellow-400  hover:bg-yellow-500 text-black font-medium 
                 cursor-pointer 2xl:py-6 py-4 px-8 rounded-lg"
-              >
-                {t("Xabar yuborish")}
-              </Button>
-             </div>
+                >
+                  {t("Xabar yuborish")}
+                </Button>
+              </div>
 
             </form>
           </div>

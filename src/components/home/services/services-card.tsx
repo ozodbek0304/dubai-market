@@ -29,9 +29,9 @@ export default function ServiceCard({ icon, title, description, commonServices }
       </CardContent>
       <CardFooter>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           {commonServices.map((item, index) => (
-            <div key={index} className="flex items-center bg-[#F5F5F5] 2xl:p-3 p-2 rounded-[12px]">
+            <div key={index} className="flex items-center w-full bg-[#F5F5F5] 2xl:p-3 p-2 rounded-[12px]">
               <div className=" max-w-8  min-w-8 max-h-8  min-h-8 rounded-full p-1 mr-2">
                 <Image priority src={"/icons/star-trevel.png"} height={30} width={30} alt="star" />
               </div>

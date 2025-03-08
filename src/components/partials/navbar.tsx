@@ -55,7 +55,10 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
           }
         });
       },
-      { threshold: 0.4 }
+      {
+        threshold: [0.3, 0.6],
+        rootMargin: "0px 0px -50% 0px", 
+      }
     );
 
     sections.forEach((section) => observer.observe(section));
