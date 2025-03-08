@@ -26,9 +26,9 @@ function formatDate(dateStr: string) {
   return formattedDate;
 }
 
-function parseDateDMY(dateString:string) {
+function parseDateDMY(dateString: string) {
   const [day, month, year] = dateString.split("/").map(Number);
-  return new Date(year, month - 1, day); 
+  return new Date(year, month - 1, day);
 }
 
 
@@ -104,13 +104,12 @@ export default function BookingForm() {
       },
     })
 
-
-
   }
 
   useEffect(() => {
     refetch();
   }, [i18n.language, refetch]);
+
 
 
 
@@ -253,14 +252,6 @@ export default function BookingForm() {
             <Button
               loading={isPending}
               type="submit"
-              onClick={() => {
-                if (watchedServices.length === 0) {
-                  form.setError("services", {
-                    type: "manual",
-                    message: "Kamida bitta xizmat tanlanishi shart!",
-                  });
-                }
-              }}
               className="w-full sm:mt-4 mt-3 bg-[#FFD700] hover:bg-[#FFD700]/90 cursor-pointer text-black font-medium p-6 rounded-lg 2xl:h-[50px] h-[40px]">
               {t("Buyurtmani yuborish")}
             </Button>

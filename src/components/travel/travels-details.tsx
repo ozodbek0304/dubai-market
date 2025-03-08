@@ -104,14 +104,14 @@ export default function TravelsDetailsPages() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {successTour && dataTour.map((service: UserData, index: number) => (
-                        <div
+                        <Link href={service?.slug}
                             key={index}
-                            className={`p-4 bg-[#FEFCE3] rounded-lg flex items-center gap-3 ${index === services.length - 1 ? "md:col-span-2" : ""
+                            className={`p-4 bg-[#FEFCE3] cursor-pointer rounded-lg flex items-center gap-3 ${index === services.length - 1 ? "md:col-span-2" : ""
                                 }`}
                         >
                             <Image priority src={"/icons/star-trevel.png"} width={30} height={30} alt="star-icon" />
                             <span className="text-gray-800">{service.title}</span>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </section>
