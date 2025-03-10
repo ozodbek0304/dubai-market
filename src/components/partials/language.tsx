@@ -20,7 +20,7 @@ function LanguageComponents({ theme }: { theme: boolean }) {
   return (
     <Select defaultValue={i18n.language} onValueChange={changeLanguage}>
       <SelectTrigger
-        className={`shadow-none sm:border-none font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}
+        className={`shadow-none lg:border-none h-7 font-medium cursor-pointer ${theme ? "text-slate-800" : "text-white"}`}
         aria-label="Tilni tanlang"
       >
         <SelectValue>

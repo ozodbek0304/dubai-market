@@ -70,7 +70,6 @@ export default function TestimonialSlider() {
 
 
 
-
     return (
         <section id="reviews" className="w-full overflow-hidden sm:py-16 py-12">
 

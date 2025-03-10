@@ -57,7 +57,7 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
       },
       {
         threshold: [0.3, 0.6],
-        rootMargin: "0px 0px -50% 0px", 
+        rootMargin: "0px 0px -50% 0px",
       }
     );
 
@@ -95,7 +95,8 @@ export default function Navbar({ navbarTheme = false }: { navbarTheme: boolean }
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center gap-2">
+          <LanguageComponents theme={(isScrolled || navbarTheme || isMenuOpen)} />
           <Button variant="ghost" size="icon" onClick={() => { setIsMenuOpen(!isMenuOpen) }} className={(isScrolled || navbarTheme || isMenuOpen) ? "text-slate-800 " : "text-white"}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>

@@ -13,7 +13,18 @@ import { ServerErrorResponse } from "./bron-form"
 import Image from "next/image"
 import Head from "next/head"
 import { toast } from "sonner"
+import { useEffect, useState } from "react"
 
+
+const backgroundImages = [
+  "/images/slider1.jpg",
+  "/images/slider2.jpg",
+  "/images/slider3.jpg",
+  "/images/slider4.jpg",
+  "/images/slider5.jpg",
+  "/images/slider6.jpg",
+  "/images/slider7.jpg",
+]
 
 interface FormType {
   name: string,
@@ -25,6 +36,7 @@ interface FormType {
 export default function Hero() {
   const { mutate, isPending } = usePost();
   const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const form = useForm<FormType>({
     defaultValues: {
@@ -60,6 +72,14 @@ export default function Hero() {
   }
 
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [backgroundImages.length]);
+
 
 
   return (
@@ -71,12 +91,20 @@ export default function Hero() {
 
       {/* Background image */}
       <div
-        className="inset-0 bg-cover bg-no-repeat bg-center p-3 sm:p-6 sm:pb-[80px] pb-24 rounded-[32px] lg:rounded-[64px] z-0 "
-        style={{
-          backgroundImage: "linear-gradient(180deg, rgba(30, 29, 33, 0.3886) 0%, rgba(30, 29, 33, 0.2436) 61.98%, rgba(30, 29, 33, 0.5046) 100%), url(hero.jpeg)",
-          backgroundPosition: "center",
-        }}
+        className={`relative inset-0 p-3 sm:p-6 sm:pb-[80px] pb-24   `}
       >
+        {backgroundImages.map((image, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out rounded-[32px] lg:rounded-[64px]"
+          style={{
+            backgroundImage: `linear-gradient(180deg, rgba(30, 29, 33, 0.3886) 0%, rgba(30, 29, 33, 0.2436) 61.98%, rgba(30, 29, 33, 0.5046) 100%), url(${image})`,
+            opacity: index === currentImageIndex ? 1 : 0,
+            zIndex: index === currentImageIndex ? 1 : 0,
+          }}
+        ></div>
+      ))}
+
         {/* Content */}
         <div className="relative  z-10 h-full flex flex-col justify-center items-center 2xl:max-w-7xl max-w-[1000px]  mx-auto pt-24">
           <div className="text-center text-white mb-8">
@@ -94,7 +122,7 @@ export default function Hero() {
 
               className="bg-white/20 backdrop-blur-sm border-0 p-0">
               <CardContent className="sm:p-6 2xl:p-10 p-3">
-                <p className="text-start 2xl:text-[24px] sm:text-lg text-[14px] text-white 2xl:mb-4 sm:mb-2">
+                <p className="text-start 2xl:text-[24px] sm:text-lg text-[14px] text-white 2xl:mb-4 mb-2">
                   {t("Biz sizga Tur tanlashga yordam beramiz! Bizga aloqaga chiqing")}
                 </p>
 
@@ -155,6 +183,7 @@ export default function Hero() {
             </Card>
           </div>
         </div>
+
       </div>
 
     </section>
