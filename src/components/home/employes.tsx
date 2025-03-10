@@ -30,6 +30,9 @@ export default function TestimonialSlider() {
     const isWide = useScreenWidth(1600);
 
 
+     console.log(data);
+     
+
     const settings = {
         dots: false,
         infinite: true,
