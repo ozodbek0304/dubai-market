@@ -18,12 +18,10 @@ import { useEffect, useState } from "react"
 
 const backgroundImages = [
   "/images/slider1.jpg",
-  "/images/slider2.jpg",
-  "/images/slider3.jpg",
-  "/images/slider4.jpg",
+  "/images/slider3.png",
+  "/images/slider4.avif",
   "/images/slider5.jpg",
-  "/images/slider6.jpg",
-  "/images/slider7.jpg",
+  "/images/slider6.png",
 ]
 
 interface FormType {
@@ -101,6 +99,7 @@ export default function Hero() {
             backgroundImage: `linear-gradient(180deg, rgba(30, 29, 33, 0.3886) 0%, rgba(30, 29, 33, 0.2436) 61.98%, rgba(30, 29, 33, 0.5046) 100%), url(${image})`,
             opacity: index === currentImageIndex ? 1 : 0,
             zIndex: index === currentImageIndex ? 1 : 0,
+            backgroundPosition:"center top"
           }}
         ></div>
       ))}
