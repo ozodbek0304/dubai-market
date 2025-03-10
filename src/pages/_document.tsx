@@ -14,15 +14,15 @@ export default function Document() {
         <meta name="author" content="Magical Deserts" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Dubay Sayohati - Eng Arzon va Qulay Turpaketlar" />
-        <meta property="og:description" content="Dubayga tezkor va arzon sayohat qiling! Eng yaxshi turpaketlar, mehmonxonalar va ekskursiyalarni tanlang." />
-        <meta property="og:image" content="/logo.png" />
+        <meta property="og:title" content="Dubaydagi Shaxsiy Vip Xizmatlar" />
+        <meta property="og:description" content="Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz" />
+        <meta property="og:image" content="/share.png" />
         <meta property="og:url" content="https://magical-deserts.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Dubay Sayohati - Eng Arzon va Qulay Turpaketlar" />
-        <meta name="twitter:description" content="Dubayga qulay va arzon sayohat qiling. Eng yaxshi turpaketlar siz uchun!" />
-        <meta name="twitter:image" content="/logo.png" />
+        <meta name="twitter:title" content="Dubaydagi Shaxsiy Vip Xizmatlar" />
+        <meta name="twitter:description" content="Biz siz uchun hashamatli xizmatlarni tashkillashtiramiz" />
+        <meta name="twitter:image" content="/share.png" />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
