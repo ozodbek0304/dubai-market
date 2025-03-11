@@ -7,7 +7,7 @@ export default function Document() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <meta name="description" content="Dubayga arzon sayohat qiling! O‘zbekistondan Dubayga eng yaxshi turpaketlar, chipta narxlari, mehmonxonalar va viza olish bo‘yicha to‘liq ma’lumot." />
+        <meta name="description" content="Dubayga arzon sayohat qiling! O'zbekistondan Dubayga eng yaxshi turpaketlar, chipta narxlari, mehmonxonalar va viza olish bo‘yicha to‘liq ma’lumot." />
 
         <meta name="keywords" content="Dubay sayohati, Dubayga chipta, Dubay vizasi, Dubay turpaketlari, Dubay mehmonxonalar, Dubay ekskursiyalar, Dubay safari, Toshkent Dubay aviachipta, arzon sayohat, Dubaydagi eng yaxshi mehmonxonalar, BAA sayohati, Dubay turizm, Dubay sayohat agentligi, Dubayda dam olish, Dubayda qayerga borish, Dubay transport narxlari, Dubay aviachipta narxlari, Dubayda yashash, Dubayda arzon sayohat qilish, Dubayda taomlar" />
 
