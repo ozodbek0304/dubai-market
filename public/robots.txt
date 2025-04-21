@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://magical-deserts.com
+
+# Sitemaps
+Sitemap: https://magical-deserts.com/sitemap.xml
