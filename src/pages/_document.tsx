@@ -14,7 +14,7 @@ export default function Document() {
 
         <meta
           name="keywords"
-          content="Dubay sayohati, Dubayga chipta, Dubay vizasi, Dubay turpaketlari, Dubay mehmonxonalar, Dubay ekskursiyalar, Dubay safari, Toshkent Dubay aviachipta, arzon sayohat, Dubaydagi eng yaxshi mehmonxonalar, BAA sayohati, Dubay turizm, Dubay sayohat agentligi, Dubayda dam olish, Dubayda qayerga borish, Dubay transport narxlari, Dubay aviachipta narxlari, Dubayda yashash, Dubayda arzon sayohat qilish, Dubayda taomlar"
+          content="Dubai tours, Best Dubai city tour, Dubai desert safari deals, Luxury tours Dubai, Private tours in Dubai, Top attractions in Dubai, Visit Dubai 2025, Dubai family vacations, Dubai sightseeing packages, Dubai tour guide service,Airport transfer Dubai, Book Dubai desert safari, Yacht rental Dubai Marina, Burj Khalifa tickets online, Cheap tours in Dubai, Dubai travel agencyl, Dubai city sightseeing bus, Adventure tours Dubai, Dubai honeymoon packages, Dubai day tours, Best things to do in Dubai, Dubai tourism offers, Dubai desert safari VIP, Evening desert safari Dubai, Dubai helicopter tours, Dubai hot air balloon rides, Dubai Miracle Garden tickets, Global Village Dubai tours, Museum of the Future Dubai tickets, Dubai Aquarium tickets discount"
         />
 
         <meta name="author" content="Magical Deserts" />
